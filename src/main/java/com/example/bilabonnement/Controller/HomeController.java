@@ -10,12 +10,12 @@ public class HomeController {
 @Autowired
 BilService bilService;
 
-    @GetMapping("/")
+    @GetMapping("/")  //når root "/" bliver kaldt i browseren, sender denne controller browseren videre til startside.html.
     public String startside(){
         return "/startside";
     }
 
-    @GetMapping("/opretBil")
+    @GetMapping("/opretBil") //opretBil-knappen på startsiden kalder denne controller, som sender browseren til opretBil.html
     public String opretBil(){
         return "/opretBil";
     }
