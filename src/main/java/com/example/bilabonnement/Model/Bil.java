@@ -15,6 +15,7 @@ public class Bil {
     private double kmprliter;
     private double registreringsafgift;
 
+    //Her er en tom constructor som bliver brugt til oprette forbindelsen mellem klasserne
     public Bil(){}
 
     public Bil(String stelnummer, int vognnummer, String mærke, String model, String brændstoftype,
