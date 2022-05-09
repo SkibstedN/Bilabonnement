@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Liste over vores biler</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Stelnummer</th>
+        <th>Vognnummer</th>
+        <th>Mærke</th>
+        <th>Model</th>
+        <th>Brændstoftype</th>
+        <th>Udstyrsniveau</th>
+        <th>Odometer</th>
+        <th>Hestekræfter</th>
+        <th>Stålpris</th>
+        <th>CO2 udledning</th>
+        <th>Kilometer per liter</th>
+        <th>Registreringsafgift</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="bil: ${billiste}">
+        <td th:text="${bil.stelnummer}"/>
+        <td th:text="${bil.vognnummer}"/>
+        <td th:text="${bil.maerke}"/>
+        <td th:text="${bil.model}"/>
+        <td th:text="${bil.braendstoftype}"/>
+        <td th:text="${bil.udstyrsniveau}"/>
+        <td th:text="${bil.odometer}"/>
+        <td th:text="${bil.hestekraefter}"/>
+        <td th:text="${bil.staalpris}"/>
+        <td th:text="${bil.co2udledning}"/>
+        <td th:text="${bil.kmprliter}"/>
+        <td th:text="${bil.registreringsafgift}"/>
+
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
