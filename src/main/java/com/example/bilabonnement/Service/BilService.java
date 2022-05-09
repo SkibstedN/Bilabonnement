@@ -1,6 +1,7 @@
 package com.example.bilabonnement.Service;
 
 
+import com.example.bilabonnement.Model.Bil;
 import com.example.bilabonnement.Repository.BilRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,4 +11,9 @@ public class BilService {
 
     @Autowired
     BilRepo bilRepo;
+
+
+    public void opretBil(Bil bil){
+        bilRepo.opretBil(bil);
+    }
 }
