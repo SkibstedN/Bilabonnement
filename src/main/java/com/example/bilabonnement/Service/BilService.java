@@ -6,6 +6,8 @@ import com.example.bilabonnement.Repository.BilRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BilService {
 
@@ -16,4 +18,9 @@ public class BilService {
     public void opretBil(Bil bil){
         bilRepo.opretBil(bil);
     }
+    public List<Bil> seBilListe(){
+        return bilRepo.seBilListe();
+    }
+
 }
+

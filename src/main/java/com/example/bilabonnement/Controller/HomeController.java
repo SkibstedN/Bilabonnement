@@ -4,9 +4,12 @@ import com.example.bilabonnement.Model.Bil;
 import com.example.bilabonnement.Service.BilService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 @Controller
 public class HomeController {
@@ -30,6 +33,12 @@ BilService bilService;
         return "/bekræftOpret";
     }
 
+    @GetMapping("/seBil") //seBil-knappen på startsiden kalder denne controller, som sender browseren til seBil.html
+    public String seBil(Model model){
+        List<Bil> bilListe = bilService.seBilListe();
+        model.addAttribute("billiste", bilListe);
+        return "/seBil";
+    }
 
 
 }

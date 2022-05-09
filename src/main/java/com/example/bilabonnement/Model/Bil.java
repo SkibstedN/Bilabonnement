@@ -4,13 +4,13 @@ public class Bil {
 
     private String stelnummer;
     private int vognnummer;
-    private String mærke;
+    private String maerke;
     private String model;
-    private String brændstoftype;
+    private String braendstoftype;
     private String udstyrsniveau;
     private int odometer;
-    private int hestekræfter;
-    private double stålpris;
+    private int hestekraefter;
+    private double staalpris;
     private double co2udledning;
     private double kmprliter;
     private double registreringsafgift;
@@ -18,18 +18,18 @@ public class Bil {
     //Her er en tom constructor som bliver brugt til oprette forbindelsen mellem klasserne
     public Bil(){}
 
-    public Bil(String stelnummer, int vognnummer, String mærke, String model, String brændstoftype,
-               String udstyrsniveau, int odometer, int hestekræfter, double stålpris, double co2udledning,
+    public Bil(String stelnummer, int vognnummer, String maerke, String model, String braendstoftype,
+               String udstyrsniveau, int odometer, int hestekraefter, double staalpris, double co2udledning,
                double kmprliter, double registreringsafgift){
         this.stelnummer = stelnummer;
         this.vognnummer = vognnummer;
-        this.mærke = mærke;
+        this.maerke = maerke;
         this.model = model;
-        this.brændstoftype = brændstoftype;
+        this.braendstoftype = braendstoftype;
         this.udstyrsniveau = udstyrsniveau;
         this.odometer = odometer;
-        this.hestekræfter = hestekræfter;
-        this.stålpris = stålpris;
+        this.hestekraefter = hestekraefter;
+        this.staalpris = staalpris;
         this.co2udledning = co2udledning;
         this.kmprliter = kmprliter;
         this.registreringsafgift = registreringsafgift;
@@ -50,12 +50,12 @@ public class Bil {
         this.vognnummer = vognnummer;
     }
 
-    public String getMærke() {
-        return mærke;
+    public String getMaerke() {
+        return maerke;
     }
 
-    public void setMærke(String mærke) {
-        this.mærke = mærke;
+    public void setMaerke(String maerke) {
+        this.maerke = maerke;
     }
 
     public String getModel() {
@@ -66,12 +66,12 @@ public class Bil {
         this.model = model;
     }
 
-    public String getBrændstoftype() {
-        return brændstoftype;
+    public String getBraendstoftype() {
+        return braendstoftype;
     }
 
-    public void setBrændstoftype(String brændstoftype) {
-        this.brændstoftype = brændstoftype;
+    public void setBraendstoftype(String braendstoftype) {
+        this.braendstoftype = braendstoftype;
     }
 
     public String getUdstyrsniveau() {
@@ -90,20 +90,20 @@ public class Bil {
         this.odometer = odometer;
     }
 
-    public int getHestekræfter() {
-        return hestekræfter;
+    public int getHestekraefter() {
+        return hestekraefter;
     }
 
-    public void setHestekræfter(int hestekræfter) {
-        this.hestekræfter = hestekræfter;
+    public void setHestekraefter(int hestekraefter) {
+        this.hestekraefter = hestekraefter;
     }
 
-    public double getStålpris() {
-        return stålpris;
+    public double getStaalpris() {
+        return staalpris;
     }
 
-    public void setStålpris(double stålpris) {
-        this.stålpris = stålpris;
+    public void setStaalpris(double staalpris) {
+        this.staalpris = staalpris;
     }
 
     public double getCo2udledning() {
