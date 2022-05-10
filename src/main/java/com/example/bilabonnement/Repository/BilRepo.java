@@ -50,7 +50,8 @@ public class BilRepo {
                 , bil.getStelnummer());
     }
     public Boolean sletBil(String stelnummer){
+        String sqlSlet ="DELETE FROM biler WHERE stelnummer = ?";
+        return dbConnection.update(sqlSlet,stelnummer)>0;
 
-        return Boolean
     }
 }

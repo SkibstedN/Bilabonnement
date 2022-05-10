@@ -27,7 +27,7 @@ public class BilService {
         bilRepo.opdaterBil(bil);
     }
     public Boolean sletBil (String stelnummer){
-       return BilRepo.sletBil(stelnummer);
+        return bilRepo.sletBil(stelnummer);
     }
 
 }

@@ -50,9 +50,13 @@ BilService bilService;
         bilService.opdaterBil(bil);
       return "/startside";
     }
-    @GetMapping("/sletBil")
+    @GetMapping("/sletBil/{stelnummer}")
     public String sletBil(@PathVariable("stelnummer")String stelnummer){
-        BilService.sletBil(stelnummer);
-        return "/seBil";
+        boolean sletbilen = bilService.sletBil(stelnummer);
+        if(sletbilen) {
+            return "/seBil";
+        } else {
+            return "/seBil";
+        }
     }
 }
