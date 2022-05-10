@@ -14,12 +14,20 @@ public class BilService {
     @Autowired
     BilRepo bilRepo;
 
-
     public void opretBil(Bil bil){
         bilRepo.opretBil(bil);
     }
     public List<Bil> seBilListe(){
         return bilRepo.seBilListe();
+    }
+    public Bil findBil(String stelnummer){
+       return bilRepo.findBil(stelnummer);
+    }
+    public void opdaterBil(Bil bil){
+        bilRepo.opdaterBil(bil);
+    }
+    public Boolean sletBil (String stelnummer){
+       return BilRepo.sletBil(stelnummer);
     }
 
 }

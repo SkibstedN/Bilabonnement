@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -33,12 +34,25 @@ BilService bilService;
         return "/bekræftOpret";
     }
 
-    @GetMapping("/seBil") //seBil-knappen på startsiden kalder denne controller, som sender browseren til seBil.html
-    public String seBil(Model model){
+    @GetMapping("/SeBil") //seBil-knappen på startsiden kalder denne controller, som sender browseren til seBil.html
+    public String SeBil(Model model){
         List<Bil> bilListe = bilService.seBilListe();
         model.addAttribute("billiste", bilListe);
         return "/seBil";
     }
-
-
+    @GetMapping("/opdaterBil/{stelnummer}")
+    public  String opdaterBil(@PathVariable("stelnummer")String stelnummer, Model model){
+        model.addAttribute("bil",bilService.findBil(stelnummer));
+        return "/opdaterBil";
+    }
+    @PostMapping("/opdaterBil")
+    public String opdaterBil(@ModelAttribute Bil bil){
+        bilService.opdaterBil(bil);
+      return "/startside";
+    }
+    @GetMapping("/sletBil")
+    public String sletBil(@PathVariable("stelnummer")String stelnummer){
+        BilService.sletBil(stelnummer);
+        return "/seBil";
+    }
 }

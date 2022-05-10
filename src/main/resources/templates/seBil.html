@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
 <h1>Liste over vores biler</h1>
+<a href="/">
+<botton>Tilbage</botton>
+</a>
 <table>
     <thead>
     <tr>
@@ -21,6 +24,8 @@
         <th>CO2 udledning</th>
         <th>Kilometer per liter</th>
         <th>Registreringsafgift</th>
+        <th>Opdater bil</th>
+        <th>Slet bil</th>
 
     </tr>
     </thead>
@@ -38,6 +43,14 @@
         <td th:text="${bil.co2udledning}"/>
         <td th:text="${bil.kmprliter}"/>
         <td th:text="${bil.registreringsafgift}"/>
+        <td>
+            <a th:href="@{'/opdaterBil/'+${bil.stelnummer}}">
+                <button>Opdater bil</button>
+            </a>
+        </td>
+        <td>
+
+        </td>
 
     </tr>
     </tbody>

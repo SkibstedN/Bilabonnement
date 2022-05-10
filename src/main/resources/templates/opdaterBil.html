@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" >
+<head>
+    <meta charset="UTF-8">
+    <title>Opdater Bil</title>
+</head>
+<body>
+<div>
+    <form action="/opdaterBil" method="post">
+        <label>Stelnummer</label>
+        <input type="text" id="stelnummer" readonly name="stelnummer" th:value="${bil.stelnummer}"/>
+        <label>Bilens Vognnummer</label>
+        <input type="text" id="vognnummer" name="vognnummer" th:value="${bil.vognnummer}"/>
+        <label>Bilens Mærke</label>
+        <input type="text" id="maerke" name="maerke" th:value="${bil.maerke}"/>
+        <label>Bilens Model</label>
+        <input type="text" id="model" name="model" th:value="${bil.model}"/>
+        <label>Bilens Brændstof Type</label>
+        <input type="text" id="braendstoftype" name="braendstoftype" th:value="${bil.braendstoftype}"/>
+        <label>Bilens Udstyrsniveau</label>
+        <input type="text" id="udstyrsniveau" name="udstyrsniveau" th:value="${bil.udstyrsniveau}"/>
+        <label>Bilens Odometer</label>
+        <input type="text" id="odometer" name="odometer" th:value="${bil.odometer}"/>
+        <label>Bilens Hestekræfter</label>
+        <input type="text" id="hestekraefter" name="hestekraefter" th:value="${bil.hestekraefter}"/>
+        <label>Bilens Stålpris</label>
+        <input type="text" id="staalpris" name="staalpris" th:value="${bil.staalpris}"/>
+        <label>Bilens CO2 Udledning</label>
+        <input type="text" id="co2udledning" name="co2udledning" th:value="${bil.co2udledning}"/>
+        <label>Km/liter</label>
+        <input type="text" id="kmprliter" name="kmprliter" th:value="${bil.kmprliter}"/>
+        <label>Bilens Registrrings Afgift</label>
+        <input type="text" id="registreringsafgift" name="registreringsafgift" th:value="${bil.registreringsafgift}"/>
+        <input type="submit" value="Gem Ændringer">
+    </form>
+</div>
+
+</body>
+</html>
