@@ -48,15 +48,15 @@ BilService bilService;
     @PostMapping("/opdaterBil")
     public String opdaterBil(@ModelAttribute Bil bil){
         bilService.opdaterBil(bil);
-      return "/startside";
+      return "redirect:/SeBil";
     }
     @GetMapping("/sletBil/{stelnummer}")
     public String sletBil(@PathVariable("stelnummer")String stelnummer){
         boolean sletbilen = bilService.sletBil(stelnummer);
         if(sletbilen) {
-            return "/seBil";
+            return "redirect:/SeBil";
         } else {
-            return "/seBil";
+            return "redirect:/SeBil";
         }
     }
 }
