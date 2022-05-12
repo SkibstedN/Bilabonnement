@@ -1,5 +1,6 @@
 package com.example.bilabonnement.Repository;
 
+import com.example.bilabonnement.Model.Abonnement;
 import com.example.bilabonnement.Model.Bil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -53,5 +54,13 @@ public class BilRepo {
         String sqlSlet ="DELETE FROM biler WHERE vognnummer = ?";
         return dbConnection.update(sqlSlet,vognnummer)>0;
 
+    }
+
+    public void opretAbonnement(Abonnement abonnement){
+        String sqlOpretAbonnement ="INSERT INTO abonnement ( abonnementnummer, FK_vognnummer, startdato," +
+                " slutdato, prisprmaaned, maxkm, kundenummer)" +
+                "VALUES (?,?,?,?,?,?,?)";
+        dbConnection.update(sqlOpretAbonnement,abonnement.getAbonnementnummer(),abonnement.getVognnummer(),abonnement.getStartdato(),
+                abonnement.getSlutdato(),abonnement.getPrisprmaaned(),abonnement.getMaxkm(),abonnement.getKundenummer());
     }
 }

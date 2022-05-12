@@ -1,80 +1,83 @@
 package com.example.bilabonnement.Model;
 
 public class Abonnement {
-    private int abonnementID;
-    private Bil bil;
-    private String startDato;
-    private String slutDato;
-    private double prisPrMaaned;
-    private int maxKm;
-    private int kundeID;
+    private int abonnementnummer;
+    private int vognnummer;
+    private String startdato;
+    private String slutdato;
+    private double prisprmaaned;
+    private int maxkm;
+    private int kundenummer;
 
     public Abonnement(){}
 
-    public Abonnement(int abonnementID, Bil bil, String startDato, String slutDato, double prisPrMaaned,
-                      int maxKm, int kundeID){
-        this.abonnementID = abonnementID;
-        this.bil = bil;
-        this.startDato = startDato;
-        this.slutDato = slutDato;
-        this.prisPrMaaned = prisPrMaaned;
-        this.maxKm = maxKm;
-        this.kundeID = kundeID;
+    public Abonnement(int abonnementnummer, int vognnummer, String startdato, String slutdato, double prisprmaaned,
+                      int maxkm, int kundenummer){
+        this.abonnementnummer = abonnementnummer;
+        this.vognnummer = vognnummer;
+        this.startdato = startdato;
+        this.slutdato = slutdato;
+        this.prisprmaaned = prisprmaaned;
+        this.maxkm = maxkm;
+        this.kundenummer = kundenummer;
     }
 
-    public int getAbonnementID() {
-        return abonnementID;
+    public int getAbonnementnummer() {
+        return abonnementnummer;
     }
 
-    public void setAbonnementID(int abonnementID) {
-        this.abonnementID = abonnementID;
+    public void setAbonnementnummer(int abonnementnummer) {
+        this.abonnementnummer = abonnementnummer;
     }
 
-    public Bil getBil() {
-        return bil;
+    public int getVognnummer() {
+        return vognnummer;
     }
 
-    public void setBil(Bil bil) {
-        this.bil = bil;
+    public void setVognnummer(int vognnummer) {
+        this.vognnummer = vognnummer;
     }
 
-    public String getStartDato() {
-        return startDato;
+    public String getStartdato() {
+        return startdato;
     }
 
-    public void setStartDato(String startDato) {
-        this.startDato = startDato;
+    public void setStartdato(String startdato) {
+        this.startdato = startdato;
     }
 
-    public String getSlutDato() {
-        return slutDato;
+    public String getSlutdato() {
+        return slutdato;
     }
 
-    public void setSlutDato(String slutDato) {
-        this.slutDato = slutDato;
+    public void setSlutdato(String slutdato) {
+        this.slutdato = slutdato;
     }
 
-    public double getPrisPrMaaned() {
-        return prisPrMaaned;
+    public double getPrisprmaaned() {
+        return prisprmaaned;
     }
 
-    public void setPrisPrMaaned(double prisPrMaaned) {
-        this.prisPrMaaned = prisPrMaaned;
+    public void setPrisprmaaned(double prisprmaaned) {
+        this.prisprmaaned = prisprmaaned;
     }
 
-    public int getMaxKm() {
-        return maxKm;
+    public int getMaxkm() {
+        return maxkm;
     }
 
-    public void setMaxKm(int maxKm) {
-        this.maxKm = maxKm;
+    public void setMaxkm(int maxkm) {
+        this.maxkm = maxkm;
     }
 
-    public int getKundeID() {
-        return kundeID;
+    public int getKundenummer() {
+        return kundenummer;
     }
 
-    public void setKundeID(int kundeID) {
-        this.kundeID = kundeID;
+    public void setKundenummer(int kundenummer) {
+        this.kundenummer = kundenummer;
     }
+
+
+
 }

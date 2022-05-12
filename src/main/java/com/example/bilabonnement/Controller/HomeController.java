@@ -1,5 +1,6 @@
 package com.example.bilabonnement.Controller;
 
+import com.example.bilabonnement.Model.Abonnement;
 import com.example.bilabonnement.Model.Bil;
 import com.example.bilabonnement.Service.BilService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,4 +61,21 @@ BilService bilService;
             return "redirect:/SeBil";
         }
     }
+
+    @GetMapping("/abonnementSide")
+    public String abonnementSide(){
+        return "/abonnementSide";
+    }
+
+    @GetMapping("/opretAbonnement")
+    public String opretAbonnement(){
+        return "/opretAbonnement";
+    }
+
+    @PostMapping("/opretAbonnementKnap")
+    public String opretAbonnementKnap(@ModelAttribute Abonnement abonnement){
+        bilService.opretAbonnement(abonnement);
+        return "/abonnementSide";
+    }
+
 }
