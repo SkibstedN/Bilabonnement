@@ -20,14 +20,14 @@ public class BilService {
     public List<Bil> seBilListe(){
         return bilRepo.seBilListe();
     }
-    public Bil findBil(String stelnummer){
-       return bilRepo.findBil(stelnummer);
+    public Bil findBil(int vognnummer){
+       return bilRepo.findBil(vognnummer);
     }
     public void opdaterBil(Bil bil){
         bilRepo.opdaterBil(bil);
     }
-    public Boolean sletBil (String stelnummer){
-        return bilRepo.sletBil(stelnummer);
+    public Boolean sletBil (int vognnummer){
+        return bilRepo.sletBil(vognnummer);
     }
 
 }

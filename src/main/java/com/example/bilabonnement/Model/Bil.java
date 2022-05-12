@@ -2,8 +2,8 @@ package com.example.bilabonnement.Model;
 
 public class Bil {
 
-    private String stelnummer;
     private int vognnummer;
+    private String stelnummer;
     private String maerke;
     private String model;
     private String braendstoftype;
@@ -18,11 +18,11 @@ public class Bil {
     //Her er en tom constructor som bliver brugt til oprette forbindelsen mellem klasserne
     public Bil(){}
 
-    public Bil(String stelnummer, int vognnummer, String maerke, String model, String braendstoftype,
+    public Bil( int vognnummer, String stelnummer, String maerke, String model, String braendstoftype,
                String udstyrsniveau, int odometer, int hestekraefter, double staalpris, double co2udledning,
                double kmprliter, double registreringsafgift){
-        this.stelnummer = stelnummer;
         this.vognnummer = vognnummer;
+        this.stelnummer = stelnummer;
         this.maerke = maerke;
         this.model = model;
         this.braendstoftype = braendstoftype;
@@ -34,13 +34,6 @@ public class Bil {
         this.kmprliter = kmprliter;
         this.registreringsafgift = registreringsafgift;
     }
-    public String getStelnummer() {
-        return stelnummer;
-    }
-
-    public void setStelnummer(String stelnummer) {
-        this.stelnummer = stelnummer;
-    }
 
     public int getVognnummer() {
         return vognnummer;
@@ -49,6 +42,15 @@ public class Bil {
     public void setVognnummer(int vognnummer) {
         this.vognnummer = vognnummer;
     }
+
+    public String getStelnummer() {
+        return stelnummer;
+    }
+
+    public void setStelnummer(String stelnummer) {
+        this.stelnummer = stelnummer;
+    }
+
 
     public String getMaerke() {
         return maerke;

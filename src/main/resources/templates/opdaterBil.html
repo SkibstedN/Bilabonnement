@@ -7,10 +7,10 @@
 <body>
 <div>
     <form action="/opdaterBil" method="post">
-        <label>Stelnummer</label>
-        <input type="text" id="stelnummer" readonly name="stelnummer" th:value="${bil.stelnummer}"/>
-        <label>Bilens Vognnummer</label>
-        <input type="text" id="vognnummer" name="vognnummer" th:value="${bil.vognnummer}"/>
+        <label>Vognnummer</label>
+        <input type="text" readonly name="vognnummer" th:value="${bil.vognnummer}"/>
+        <label>Bilens Stelnummer</label>
+        <input type="text" id="stelnummer" name="stelnummer" th:value="${bil.stelnummer}"/>
         <label>Bilens Mærke</label>
         <input type="text" id="maerke" name="maerke" th:value="${bil.maerke}"/>
         <label>Bilens Model</label>

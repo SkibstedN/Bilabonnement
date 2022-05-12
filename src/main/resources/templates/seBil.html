@@ -12,8 +12,8 @@
 <table>
     <thead>
     <tr>
-        <th>Stelnummer</th>
         <th>Vognnummer</th>
+        <th>Stelnummer</th>
         <th>Mærke</th>
         <th>Model</th>
         <th>Brændstoftype</th>
@@ -31,8 +31,8 @@
     </thead>
     <tbody>
     <tr th:each="bil: ${billiste}">
-        <td th:text="${bil.stelnummer}"/>
         <td th:text="${bil.vognnummer}"/>
+        <td th:text="${bil.stelnummer}"/>
         <td th:text="${bil.maerke}"/>
         <td th:text="${bil.model}"/>
         <td th:text="${bil.braendstoftype}"/>
@@ -44,12 +44,12 @@
         <td th:text="${bil.kmprliter}"/>
         <td th:text="${bil.registreringsafgift}"/>
         <td>
-            <a th:href="@{'/opdaterBil/'+${bil.stelnummer}}">
+            <a th:href="@{'/opdaterBil/'+${bil.vognnummer}}">
                 <button>Opdater bil</button>
             </a>
         </td>
         <td>
-            <a th:href="@{'/sletBil/'+${bil.stelnummer}}">
+            <a th:href="@{'/sletBil/'+${bil.vognnummer}}">
                 <button>Slet bil</button>
             </a>
         </td>

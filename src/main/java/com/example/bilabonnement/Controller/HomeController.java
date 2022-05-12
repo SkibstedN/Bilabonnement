@@ -40,9 +40,10 @@ BilService bilService;
         model.addAttribute("billiste", bilListe);
         return "/seBil";
     }
-    @GetMapping("/opdaterBil/{stelnummer}")
-    public  String opdaterBil(@PathVariable("stelnummer")String stelnummer, Model model){
-        model.addAttribute("bil",bilService.findBil(stelnummer));
+    @GetMapping("/opdaterBil/{vognnummer}")
+    public  String opdaterBil(@PathVariable("vognnummer") int vognnummer, Model model){
+        //System.out.println(bilService.findBil(vognnummer).getVognnummer());
+        model.addAttribute("bil",bilService.findBil(vognnummer));
         return "/opdaterBil";
     }
     @PostMapping("/opdaterBil")
@@ -50,9 +51,9 @@ BilService bilService;
         bilService.opdaterBil(bil);
       return "redirect:/SeBil";
     }
-    @GetMapping("/sletBil/{stelnummer}")
-    public String sletBil(@PathVariable("stelnummer")String stelnummer){
-        boolean sletbilen = bilService.sletBil(stelnummer);
+    @GetMapping("/sletBil/{vognnummer}")
+    public String sletBil(@PathVariable("vognnummer")int vognnummer){
+        boolean sletbilen = bilService.sletBil(vognnummer);
         if(sletbilen) {
             return "redirect:/SeBil";
         } else {
