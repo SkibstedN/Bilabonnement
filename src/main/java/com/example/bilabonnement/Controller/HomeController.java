@@ -84,5 +84,17 @@ BilService bilService;
         model.addAttribute("abonnementliste", abonnementListe);
         return "/seAbonnement";
     }
+    @GetMapping("/opdaterAbonnement/{abonnementnummer}")
+    public  String opdaterAbonnement(@PathVariable("abonnementnummer") int abonnementnummer, Model model){
+        //System.out.println(bilService.findBil(vognnummer).getVognnummer());
+        model.addAttribute("abonnement",bilService.findAbonnement(abonnementnummer));
+        return "/opdaterAbonnement";
+    }
+    @PostMapping("/opdaterAbonnement")
+    public String opdaterAbonnement(@ModelAttribute Abonnement abonnement){
+        bilService.opdaterAbonnement(abonnement);
+        return "redirect:/SeAbonnement";
+    }
+
 
 }
