@@ -39,7 +39,6 @@ public class BilService {
     public Boolean sletAbonnement (int abonnementnummer){return bilRepo.sletAbonnement(abonnementnummer);
     }
 
-    public List<Abonnement> seAbonnementListe(){return bilRepo.seAbonnementListe();}
     public Abonnement findAbonnement( int abonnementnummer){
         return bilRepo.findAbonnement(abonnementnummer);
     }
