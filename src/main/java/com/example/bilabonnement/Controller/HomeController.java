@@ -108,4 +108,14 @@ BilService bilService;
         return "/abonnementSide";
     }
 
+    @GetMapping("/sletAbonnement/{abonnementnummer}")
+    public String sletAbonnement(@PathVariable("abonnementnummer")int abonnementnummer){
+        boolean sletabonnementet = bilService.sletAbonnement(abonnementnummer);
+        if(sletabonnementet) {
+            return "redirect:/SeAbonnement";
+        } else {
+            return "redirect:/SeAbonnement";
+        }
+    }
+
 }

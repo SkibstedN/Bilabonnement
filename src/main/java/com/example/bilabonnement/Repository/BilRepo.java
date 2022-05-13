@@ -63,4 +63,17 @@ public class BilRepo {
         dbConnection.update(sqlOpretAbonnement,abonnement.getAbonnementnummer(),abonnement.getVognnummer(),abonnement.getStartdato(),
                 abonnement.getSlutdato(),abonnement.getPrisprmaaned(),abonnement.getMaxkm(),abonnement.getKundenummer());
     }
+
+    public List<Abonnement> seAbonnementListe(){
+        String sqlSeAbonnement = "SELECT abonnementnummer, FK_vognnummer, startdato, slutdato," +
+                "prisprmaaned, maxkm, kundenumer FROM abonnement ";
+        RowMapper<Abonnement> abonnementListe = new BeanPropertyRowMapper<>(Abonnement.class);
+        return dbConnection.query(sqlSeAbonnement, abonnementListe);
+    }
+
+    public Boolean sletAbonnement(int abonnementnummer){
+        String sqlSlet ="DELETE FROM biler WHERE abonnementnummer = ?";
+        return dbConnection.update(sqlSlet,abonnementnummer)>0;
+
+    }
 }
