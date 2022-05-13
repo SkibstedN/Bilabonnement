@@ -72,7 +72,7 @@ public class BilRepo {
     }
 
     public Boolean sletAbonnement(int abonnementnummer){
-        String sqlSletAbonnement ="DELETE FROM biler WHERE vognnummer = ?";
+        String sqlSletAbonnement ="DELETE FROM abonnement WHERE abonnementnummer = ?";
         return dbConnection.update(sqlSletAbonnement,abonnementnummer)>0;
 
     }
