@@ -33,7 +33,11 @@ public class BilService {
     public void opretAbonnement(Abonnement abonnement){
         bilRepo.opretAbonnement(abonnement);
     }
-    public List<Abonnement> seAbonnementListe(){return bilRepo.seAbonnementListe();}
+    public List<Abonnement> seAbonnementListe(){
+        return bilRepo.seAbonnementListe();
+    }
+    public Boolean sletAbonnement (int abonnementnummer){return bilRepo.sletAbonnement(abonnementnummer);
+    }
 
 }
 
