@@ -60,57 +60,20 @@ public class BilRepo {
         String sqlOpretAbonnement ="INSERT INTO abonnement ( abonnementnummer, FK_vognnummer, startdato," +
                 " slutdato, prisprmaaned, maxkm, kundenummer)" +
                 "VALUES (?,?,?,?,?,?,?)";
-        dbConnection.update(sqlOpretAbonnement,abonnement.getAbonnementnummer(),abonnement.getFK_vognnummer(),abonnement.getStartdato(),
+        dbConnection.update(sqlOpretAbonnement,abonnement.getAbonnementnummer(),abonnement.getVognnummer(),abonnement.getStartdato(),
                 abonnement.getSlutdato(),abonnement.getPrisprmaaned(),abonnement.getMaxkm(),abonnement.getKundenummer());
     }
-    public List<Abonnement> seAbonnementListe(){
-        String sqlSeAbonnement = "SELECT abonnementnummer, FK_vognnummer, startdato," +
-                " slutdato, prisprmaaned, maxkm, kundenummer " +
-                "FROM abonnement ";
-        RowMapper<Abonnement> abonnementListe = new BeanPropertyRowMapper<>(Abonnement.class);
-        return dbConnection.query(sqlSeAbonnement, abonnementListe);
-    }
-    public List<Abonnement> sortByDate(){
-        String sqlSeAbonnement = "SELECT abonnementnummer, FK_vognnummer, startdato," +
-                " slutdato, prisprmaaned, maxkm, kundenummer " +
-                "FROM abonnement ORDER BY slutdato";
-        RowMapper<Abonnement> abonnementListe = new BeanPropertyRowMapper<>(Abonnement.class);
-        return dbConnection.query(sqlSeAbonnement, abonnementListe);
-    }
 
-    public List<Abonnement> sortBy(String sorterEfter){
-        String sqlSorter = "SELECT abonnementnummer, FK_vognnummer, startdato," +
-                " slutdato, prisprmaaned, maxkm, kundenummer " +
-                "FROM abonnement ORDER BY ?";
+    public List<Abonnement> seAbonnementListe(){
+        String sqlSeAbonnement = "SELECT abonnementnummer, FK_vognnummer, startdato, slutdato," +
+                "prisprmaaned, maxkm, kundenumer FROM abonnement ";
         RowMapper<Abonnement> abonnementListe = new BeanPropertyRowMapper<>(Abonnement.class);
-        return dbConnection.query(sqlSorter, abonnementListe,sorterEfter);
-    }
-    public List<Abonnement> sortByKundenummer(){
-        String sqlSorter = "SELECT abonnementnummer, FK_vognnummer, startdato," +
-                " slutdato, prisprmaaned, maxkm, kundenummer " +
-                "FROM abonnement ORDER BY kundenummer";
-        RowMapper<Abonnement> abonnementListe = new BeanPropertyRowMapper<>(Abonnement.class);
-        return dbConnection.query(sqlSorter, abonnementListe);
+        return dbConnection.query(sqlSeAbonnement, abonnementListe);
     }
 
     public Boolean sletAbonnement(int abonnementnummer){
-        String sqlSletAbonnement ="DELETE FROM abonnement WHERE abonnementnummer = ?";
-        return dbConnection.update(sqlSletAbonnement,abonnementnummer)>0;
+        String sqlSlet ="DELETE FROM biler WHERE abonnementnummer = ?";
+        return dbConnection.update(sqlSlet,abonnementnummer)>0;
 
-    }
-    public Abonnement findAbonnement(int abonnementnummer){
-        String sqlFindbil="SELECT abonnementnummer, FK_vognnummer, startdato," +
-                " slutdato, prisprmaaned, maxkm, kundenummer"+
-                " FROM abonnement WHERE abonnementnummer = ?";
-        RowMapper <Abonnement> fundetAbonnement = new BeanPropertyRowMapper<>(Abonnement.class);
-        Abonnement abonnement= dbConnection.queryForObject(sqlFindbil,fundetAbonnement,abonnementnummer);
-        return abonnement;
-    }
-    public void opdaterAbonnement(Abonnement abonnement){
-        String sqlOpdaterAbonnement ="UPDATE abonnement SET FK_vognnummer = ?, startdato = ?, slutdato = ?," +
-                "prisprmaaned = ?, maxkm = ?, kundenummer = ? WHERE abonnementnummer = ?";
-        dbConnection.update(sqlOpdaterAbonnement,abonnement.getFK_vognnummer(),abonnement.getStartdato(),
-                abonnement.getSlutdato(),abonnement.getPrisprmaaned(),abonnement.getMaxkm(),abonnement.getKundenummer(),
-                abonnement.getAbonnementnummer());
     }
 }

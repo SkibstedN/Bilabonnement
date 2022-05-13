@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -24,10 +23,8 @@ BilService bilService;
         return "/startside";
     }
 
-    @GetMapping("/startsideDataregistrering")  //sender fra startsiden til dataregistrerings forsiden. og indlæser abonnementerne til dashbordet
-    public String startsideDataregistrering(Model model){
-        List<Abonnement> abonnementListe = bilService.sortByDate();
-        model.addAttribute("abonnementliste", abonnementListe);
+    @GetMapping("/startsideDataregistrering")  //sender fra startsiden til dataregistrerings forsiden
+    public String startsideDataregistrering(){
         return "/dataregistrering";
     }
 
@@ -109,19 +106,6 @@ BilService bilService;
     public String opretAbonnementKnap(@ModelAttribute Abonnement abonnement){
         bilService.opretAbonnement(abonnement);
         return "/abonnementSide";
-
-    }
-
-    @GetMapping("/opdaterAbonnement/{abonnementnummer}")
-    public  String opdaterAbonnement(@PathVariable("abonnementnummer") int abonnementnummer, Model model){
-        //System.out.println(bilService.findBil(vognnummer).getVognnummer());
-        model.addAttribute("abonnement",bilService.findAbonnement(abonnementnummer));
-        return "/opdaterAbonnement";
-    }
-    @PostMapping("/opdaterAbonnement")
-    public String opdaterAbonnement(@ModelAttribute Abonnement abonnement){
-        bilService.opdaterAbonnement(abonnement);
-        return "redirect:/SeAbonnement";
     }
 
     @GetMapping("/sletAbonnement/{abonnementnummer}")
@@ -133,28 +117,5 @@ BilService bilService;
             return "redirect:/SeAbonnement";
         }
     }
-    @GetMapping("/SeAbonnement")
-    public String SeAbonnement(Model model) {
-        ArrayList<String> options = new ArrayList<>();
-        options.add("kundenummer");
-        options.add("FK_vognnummer");
-        options.add("kundenummer");
-        options.add("prisprmaaned");
-        options.add("maxkm");
-        options.add("startdato");
-        options.add("slutdato");
-        model.addAttribute("options",options);
-        List<Abonnement> abonnementListe = bilService.seAbonnementListe();
-        model.addAttribute("abonnementliste", abonnementListe);
-        return "/seAbonnement";
-    }
-//FIXME denne controller virker ikke korrekt endnu
-    @GetMapping("/sorterEfterKundenummer")
-    public String sortBy(Model model){
-        List<Abonnement> abonnementListe = bilService.sortByKundenummer();
-        model.addAttribute("abonnementliste", abonnementListe);
-        return "/sorterAbonnement";
-    }
-
 
 }
