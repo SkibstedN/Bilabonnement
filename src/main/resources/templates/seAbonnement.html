@@ -21,11 +21,11 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="Abonnement: ${abonnement}">
+    <tr th:each="abonnement: ${abonnementliste}">
         <td th:text="${abonnement.abonnementnummer}"/>
         <td th:text="${abonnement.FK_vognnummer}"/>
-        <td th:text="${abonnement.startdate}"/>
-        <td th:text="${abonnement.slutabonnement}"/>
+        <td th:text="${abonnement.startdato}"/>
+        <td th:text="${abonnement.slutdato}"/>
         <td th:text="${abonnement.prisprmaaned}"/>
         <td th:text="${abonnement.maxkm}"/>
         <td th:text="${abonnement.kundenummer}"/>
