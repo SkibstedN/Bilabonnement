@@ -1,0 +1,10 @@
+.startsideknapper{
+    margin: 20px;
+}
+
+.startsideknapperbillede{
+    display: block;
+    height: 320px;
+    width: 350px;
+    object-fit: contain;
+}

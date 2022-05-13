@@ -23,8 +23,38 @@ BilService bilService;
         return "/startside";
     }
 
+    @GetMapping("/startsideDataregistrering")  //sender fra startsiden til dataregistrerings forsiden
+    public String startsideDataregistrering(){
+        return "/dataregistrering";
+    }
 
-    @GetMapping("/opretBil") //opretBil-knappen på startsiden kalder denne controller, som sender browseren til opretBil.html
+    @GetMapping("/startsideSkadeogUdbedring") //sender fra startsiden til skade og udbedrings forsiden
+    public String startsideSkadeogUdbedring(){
+        return "/skadeogudbedring";
+    }
+
+    @GetMapping("/startsideForretningsUdviklere") //sender fra startsiden til forretnings udviklernes forside
+    public String startsideForretningsUdviklere(){
+        return "/forretningsudviklere";
+    }
+
+    @GetMapping("/administrerAbonnementer") //sender fra dataregistreringforsiden til abonnementsiden
+    public String administrerAbonnementer(){
+        return "/abonnementSide";
+    }
+
+    @GetMapping("/administrerBiler") //sender fra dataregistreringforsiden til bilsiden
+    public String administrerBiler(){
+        return "/bilSide";
+    }
+
+    @GetMapping("/administrerFejlrapporterData") //sender fra dataregistreringforsiden til fejlrapportsiden
+    public String administrerFejlrapporterData(){
+        return "/fejlrapportSide";
+    }
+
+
+    @GetMapping("/opretBil") //sender browseren fra bilsiden til opretBil.html
     public String opretBil(){
         return "/opretBil";
     }
@@ -35,7 +65,7 @@ BilService bilService;
         return "/bekræftOpret";
     }
 
-    @GetMapping("/SeBil") //seBil-knappen på startsiden kalder denne controller, som sender browseren til seBil.html
+    @GetMapping("/SeBil") // sender browseren fra bilsiden til seBil.html
     public String SeBil(Model model){
         List<Bil> bilListe = bilService.seBilListe();
         model.addAttribute("billiste", bilListe);
