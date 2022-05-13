@@ -70,4 +70,25 @@ public class BilRepo {
         RowMapper<Abonnement> abonnementListe = new BeanPropertyRowMapper<>(Abonnement.class);
         return dbConnection.query(sqlSeAbonnement, abonnementListe);
     }
+
+    public Boolean sletAbonnement(int abonnementnummer){
+        String sqlSletAbonnement ="DELETE FROM abonnement WHERE abonnementnummer = ?";
+        return dbConnection.update(sqlSletAbonnement,abonnementnummer)>0;
+
+    }
+    public Abonnement findAbonnement(int abonnementnummer){
+        String sqlFindbil="SELECT abonnementnummer, FK_vognnummer, startdato," +
+                " slutdato, prisprmaaned, maxkm, kundenummer"+
+                " FROM abonnement WHERE abonnementnummer = ?";
+        RowMapper <Abonnement> fundetAbonnement = new BeanPropertyRowMapper<>(Abonnement.class);
+        Abonnement abonnement= dbConnection.queryForObject(sqlFindbil,fundetAbonnement,abonnementnummer);
+        return abonnement;
+    }
+    public void opdaterAbonnement(Abonnement abonnement){
+        String sqlOpdaterAbonnement ="UPDATE abonnement SET FK_vognnummer = ?, startdato = ?, slutdato = ?," +
+                "prisprmaaned = ?, maxkm = ?, kundenummer = ? WHERE abonnementnummer = ?";
+        dbConnection.update(sqlOpdaterAbonnement,abonnement.getFK_vognnummer(),abonnement.getStartdato(),
+                abonnement.getSlutdato(),abonnement.getPrisprmaaned(),abonnement.getMaxkm(),abonnement.getKundenummer(),
+                abonnement.getAbonnementnummer());
+    }
 }
