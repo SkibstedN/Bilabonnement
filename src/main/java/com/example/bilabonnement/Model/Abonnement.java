@@ -2,7 +2,7 @@ package com.example.bilabonnement.Model;
 
 public class Abonnement {
     private int abonnementnummer;
-    private int vognnummer;
+    private int FK_vognnummer;
     private String startdato;
     private String slutdato;
     private double prisprmaaned;
@@ -11,10 +11,10 @@ public class Abonnement {
 
     public Abonnement(){}
 
-    public Abonnement(int abonnementnummer, int vognnummer, String startdato, String slutdato, double prisprmaaned,
+    public Abonnement(int abonnementnummer, int FK_vognnummer, String startdato, String slutdato, double prisprmaaned,
                       int maxkm, int kundenummer){
         this.abonnementnummer = abonnementnummer;
-        this.vognnummer = vognnummer;
+        this.FK_vognnummer = FK_vognnummer;
         this.startdato = startdato;
         this.slutdato = slutdato;
         this.prisprmaaned = prisprmaaned;
@@ -30,12 +30,12 @@ public class Abonnement {
         this.abonnementnummer = abonnementnummer;
     }
 
-    public int getVognnummer() {
-        return vognnummer;
+    public int getFK_vognnummer() {
+        return FK_vognnummer;
     }
 
-    public void setVognnummer(int vognnummer) {
-        this.vognnummer = vognnummer;
+    public void setFK_vognnummer(int vognnummer) {
+        this.FK_vognnummer = vognnummer;
     }
 
     public String getStartdato() {

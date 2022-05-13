@@ -76,6 +76,13 @@ BilService bilService;
     public String opretAbonnementKnap(@ModelAttribute Abonnement abonnement){
         bilService.opretAbonnement(abonnement);
         return "/abonnementSide";
+
+    }
+    @GetMapping("/SeAbonnement")
+    public String SeAbonnement(Model model) {
+        List<Abonnement> abonnementListe = bilService.seAbonnementListe();
+        model.addAttribute("abonnementliste", abonnementListe);
+        return "/seAbonnement";
     }
 
     @GetMapping("/sletAbonnement/{abonnementnummer}")
