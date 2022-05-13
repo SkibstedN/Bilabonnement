@@ -60,20 +60,14 @@ public class BilRepo {
         String sqlOpretAbonnement ="INSERT INTO abonnement ( abonnementnummer, FK_vognnummer, startdato," +
                 " slutdato, prisprmaaned, maxkm, kundenummer)" +
                 "VALUES (?,?,?,?,?,?,?)";
-        dbConnection.update(sqlOpretAbonnement,abonnement.getAbonnementnummer(),abonnement.getVognnummer(),abonnement.getStartdato(),
+        dbConnection.update(sqlOpretAbonnement,abonnement.getAbonnementnummer(),abonnement.getFK_vognnummer(),abonnement.getStartdato(),
                 abonnement.getSlutdato(),abonnement.getPrisprmaaned(),abonnement.getMaxkm(),abonnement.getKundenummer());
     }
-
     public List<Abonnement> seAbonnementListe(){
-        String sqlSeAbonnement = "SELECT abonnementnummer, FK_vognnummer, startdato, slutdato," +
-                "prisprmaaned, maxkm, kundenumer FROM abonnement ";
+        String sqlSeAbonnement = "SELECT abonnementnummer, FK_vognnummer, startdato," +
+                " slutdato, prisprmaaned, maxkm, kundenummer " +
+                "FROM abonnement ";
         RowMapper<Abonnement> abonnementListe = new BeanPropertyRowMapper<>(Abonnement.class);
         return dbConnection.query(sqlSeAbonnement, abonnementListe);
-    }
-
-    public Boolean sletAbonnement(int abonnementnummer){
-        String sqlSlet ="DELETE FROM biler WHERE abonnementnummer = ?";
-        return dbConnection.update(sqlSlet,abonnementnummer)>0;
-
     }
 }

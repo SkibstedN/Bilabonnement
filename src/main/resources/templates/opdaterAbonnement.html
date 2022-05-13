@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8" xmlns="http://www.w3.org/1999/xhtml">
     <title>Opdater Abonnement</title>
-    <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 </head>
 <body>
 <h2>Opdater Abonnement</h2>
 <div>
 
 
-    <form class="form" action="/opdaterAbonnement" method="post">
+
+    <form action="/opdaterAbonnement" method="post">
         <label>AbonnementNummer</label>
         <input type="text" readonly name="abonnementnummer" th:value="${abonnement.abonnementnummer}"/>
         <label>Vognnummer</label>
-        <input type="text" id="FK_vognnummer" name="FK_vognnummer" th:value="${abonnement.FK_vognnummer}"/>
+        <input type="text" id="vognnummer" name="vognnummer" th:value="${abonnement.vognnummer}"/>
         <label>Start Dato</label>
         <input type="text" id="startdato" name="startdato" th:value="${abonnement.startdato}"/>
         <label>Slut Dato</label>
