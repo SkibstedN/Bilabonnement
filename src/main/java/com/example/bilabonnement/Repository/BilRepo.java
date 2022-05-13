@@ -70,4 +70,10 @@ public class BilRepo {
         RowMapper<Abonnement> abonnementListe = new BeanPropertyRowMapper<>(Abonnement.class);
         return dbConnection.query(sqlSeAbonnement, abonnementListe);
     }
+
+    public Boolean sletAbonnement(int abonnementnummer){
+        String sqlSletAbonnement ="DELETE FROM biler WHERE vognnummer = ?";
+        return dbConnection.update(sqlSletAbonnement,abonnementnummer)>0;
+
+    }
 }
