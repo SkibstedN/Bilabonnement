@@ -7,7 +7,7 @@
 </head>
 <body>
 <a href="/">
-    <button>Tilbage</button>
+    <button class="button">Tilbage</button>
 </a>
 <table>
     <thead>
@@ -32,13 +32,11 @@
         <td th:text="${abonnement.kundenummer}"/>
         <td>
             <a th:href="@{'/opdaterAbonnement/'+${abonnement.abonnementnummer}}">
-                <button>Opdater Abonnement</button>
-            </a>
+                <button>Opdater Abonnement</button></a>
         </td>
         <td>
             <a th:href="@{'/sletAbonnement/'+${abonnement.abonnementnummer}}">
-                <button>Slet Abonnement</button>
-            </a>
+                <button>Slet Abonnement</button></a>
         </td>
     </tr>
     </tbody>

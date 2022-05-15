@@ -9,7 +9,12 @@
     object-fit: contain;
 }
 .button{
-    margin: 100px;
+    margin: 20px;
     size: 50px 30px;
-    color: palegreen;
+}
+
+.form{
+    text-shadow: black 2px 2px 2px;
+    background-color: azure;
+    padding: 10px;
 }
