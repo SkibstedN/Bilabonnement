@@ -8,8 +8,7 @@
 <body>
 <h1>Liste over vores biler</h1>
 <a href="/administrerBiler">
-    <button>Tilbage</button>
-</a>
+    <button>Tilbage</button></a>
 <table>
     <thead>
     <tr>
@@ -46,13 +45,11 @@
         <td th:text="${bil.registreringsafgift}"/>
         <td>
             <a th:href="@{'/opdaterBil/'+${bil.vognnummer}}">
-                <button>Opdater bil</button>
-            </a>
+                <button>Opdater bil</button></a>
         </td>
         <td>
             <a th:href="@{'/sletBil/'+${bil.vognnummer}}">
-                <button>Slet bil</button>
-            </a>
+                <button>Slet bil</button></a>
         </td>
     </tr>
     </tbody>
