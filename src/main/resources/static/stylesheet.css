@@ -8,3 +8,8 @@
     width: 350px;
     object-fit: contain;
 }
+.button{
+    margin: 100px;
+    size: 50px 30px;
+    color: palegreen;
+}
