@@ -7,41 +7,56 @@
 </head>
 <body>
 <a href="/">
-    <button class="button">Tilbage</button>
-</a>
+    <button class="button">Tilbage</button></a>
+    <label>Sorter efter</label>
+
+    <form action="/sorterEfter/orderBy" method="post">
+        <select id="orderBy" name="orderBy">
+            <option value="abonnementnummer">Abonnement NR</option>
+            <option value="FK_vognnumer">Vogn NR</option>
+            <option value="kundenummer">Kunde NR</option>
+            <option value="prisprmaaned">Pris pr/Måned</option>
+            <option value="maxkm">Max KM</option>
+            <option value="startdato">Start Dato</option>
+            <option value="slutdato">Slut Dato</option>
+        </select>
+        <input type="submit" value="Sorter">
+    </form>
 <table>
     <thead>
-    <tr class="tr">
-        <th class="th">Abonnement Nummer</th>
-        <th class="th">Vognnummer</th>
-        <th class="th">Start dato</th>
-        <th class="th">Slut dato</th>
-        <th class="th">månedlig pris</th>
-        <th class="th">Max km</th>
-        <th class="th">Kundenummer</th>
-        <th class="th">Opdater abonnement</th>
-        <th class="th">Slet abonnement</th>
+    <tr>
+        <th>Abonnement Nummer</th>
+        <th>Vognnummer</th>
+        <th>Start dato</th>
+        <th>Slut dato</th>
+        <th>månedlig pris</th>
+        <th>Max km</th>
+        <a th:href="@{'/sorterEfter/'+${'kundenummer'}}">
+            <button>Kundenummer</button></a>
+
     </tr>
     </thead>
     <tbody>
-    <tr class="tr" th:each="abonnement: ${abonnementliste}">
-        <td class="td" th:text="${abonnement.abonnementnummer}"/>
-        <td class="td" th:text="${abonnement.FK_vognnummer}"/>
-        <td class="td" th:text="${abonnement.startdato}"/>
-        <td class="td" th:text="${abonnement.slutdato}"/>
-        <td class="td" th:text="${abonnement.prisprmaaned}"/>
-        <td class="td" th:text="${abonnement.maxkm}"/>
-        <td class="td" th:text="${abonnement.kundenummer}"/>
-        <td class="td">
+    <tr th:each="abonnement: ${abonnementliste}">
+        <td th:text="${abonnement.abonnementnummer}"/>
+        <td th:text="${abonnement.FK_vognnummer}"/>
+        <td th:text="${abonnement.startdato}"/>
+        <td th:text="${abonnement.slutdato}"/>
+        <td th:text="${abonnement.prisprmaaned}"/>
+        <td th:text="${abonnement.maxkm}"/>
+        <td th:text="${abonnement.kundenummer}"/>
+        <td>
             <a th:href="@{'/opdaterAbonnement/'+${abonnement.abonnementnummer}}">
                 <button>Opdater Abonnement</button></a>
         </td>
-        <td class="td">
+        <td>
             <a th:href="@{'/sletAbonnement/'+${abonnement.abonnementnummer}}">
                 <button>Slet Abonnement</button></a>
         </td>
     </tr>
     </tbody>
 </table>
+
+
 </body>
 </html>
