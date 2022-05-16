@@ -11,37 +11,37 @@
 </a>
 <table>
     <thead>
-    <tr>
-        <th>Abonnement Nummer</th>
-        <th>Vognnummer</th>
-        <th>Start dato</th>
-        <th>Slut dato</th>
-        <th>månedlig pris</th>
-        <th>Max km</th>
-        <th>Kundenummer</th>
+    <tr class="tr">
+        <th class="th">Abonnement Nummer</th>
+        <th class="th">Vognnummer</th>
+        <th class="th">Start dato</th>
+        <th class="th">Slut dato</th>
+        <th class="th">månedlig pris</th>
+        <th class="th">Max km</th>
+        <th class="th">Kundenummer</th>
+        <th class="th">Opdater abonnement</th>
+        <th class="th">Slet abonnement</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="abonnement: ${abonnementliste}">
-        <td th:text="${abonnement.abonnementnummer}"/>
-        <td th:text="${abonnement.FK_vognnummer}"/>
-        <td th:text="${abonnement.startdato}"/>
-        <td th:text="${abonnement.slutdato}"/>
-        <td th:text="${abonnement.prisprmaaned}"/>
-        <td th:text="${abonnement.maxkm}"/>
-        <td th:text="${abonnement.kundenummer}"/>
-        <td>
+    <tr class="tr" th:each="abonnement: ${abonnementliste}">
+        <td class="td" th:text="${abonnement.abonnementnummer}"/>
+        <td class="td" th:text="${abonnement.FK_vognnummer}"/>
+        <td class="td" th:text="${abonnement.startdato}"/>
+        <td class="td" th:text="${abonnement.slutdato}"/>
+        <td class="td" th:text="${abonnement.prisprmaaned}"/>
+        <td class="td" th:text="${abonnement.maxkm}"/>
+        <td class="td" th:text="${abonnement.kundenummer}"/>
+        <td class="td">
             <a th:href="@{'/opdaterAbonnement/'+${abonnement.abonnementnummer}}">
                 <button>Opdater Abonnement</button></a>
         </td>
-        <td>
+        <td class="td">
             <a th:href="@{'/sletAbonnement/'+${abonnement.abonnementnummer}}">
                 <button>Slet Abonnement</button></a>
         </td>
     </tr>
     </tbody>
 </table>
-
-
 </body>
 </html>

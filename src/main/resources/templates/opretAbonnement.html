@@ -7,25 +7,28 @@
 </head>
 <body>
 <h2>opret abonnement</h2>
-<table>
-    <form action="/opretAbonnementKnap" method="post">
-        <label>Abonnement Nummer</label>
-        <input type="text" name="abonnementnummer">
-        <label>Bilens vognnummer</label>
-        <input type="text" name="FK_vognnummer">
-        <label>start dato</label>
-        <input type="text" name="startdato">
-        <label>slut dato</label>
-        <input type="text" name="slutdato">
-        <label>Månedlig pris</label>
-        <input type="text" name="prisprmaaned">
-        <label>Max km</label>
-        <input type="text" name="maxkm">
-        <label>kundens nummer</label>
-        <input type="text" name="kundenummer">
+<a href="/abonnementSide"><button>Tilbage</button></a>
+<div>
+    <table>
+        <form action="/opretAbonnementKnap" method="post">
+            <label>Abonnement Nummer</label>
+            <input type="text" name="abonnementnummer">
+            <label>Bilens vognnummer</label>
+            <input type="text" name="FK_vognnummer">
+            <label>start dato</label>
+            <input type="text" name="startdato">
+            <label>slut dato</label>
+            <input type="text" name="slutdato">
+            <label>Månedlig pris</label>
+            <input type="text" name="prisprmaaned">
+            <label>Max km</label>
+            <input type="text" name="maxkm">
+            <label>kundens nummer</label>
+            <input type="text" name="kundenummer">
 
-        <input type="submit" class="button1" value="Opret abonnement">
-    </form>
-</table>
+            <input type="submit" class="button1" value="Opret abonnement">
+        </form>
+    </table>
+</div>
 </body>
 </html>

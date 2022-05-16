@@ -1,20 +1,96 @@
-.startsideknapper{
-    margin: 20px;
-}
-
-.startsideknapperbillede{
-    display: block;
-    height: 320px;
-    width: 350px;
-    object-fit: contain;
+.body{
+    margin: 0px;
+    border: 0px;
+    padding: 0px;
 }
 .button{
-    margin: 20px;
-    size: 50px 30px;
+    width: 70px;
+    height: 35px;
+    padding:2px;
+}
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
-.form{
-    text-shadow: black 2px 2px 2px;
+input[type=submit] {
+    width: 100%;
+    background-color: #8f8f8f;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #9bc097;
+}
+
+div {
+    margin: 10px;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+.td, th{
+    border: #ced4ea;
+}
+.tr:nth-child(even){
     background-color: azure;
-    padding: 10px;
+    color: black;
+
+}
+.tr:nth-child(odd){
+    background-color: darkgray;
+    color: black;
+
+}
+.topbar{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    float: top;
+    width: 100%;
+    background-color: #d2d2d2;
+    color: black;
+    display: block;
+    overflow: hidden;
+}
+.startsideknapper{
+    width: 410px;
+    height: 210px;
+    padding: 5PX;
+    color: black;
+    background-color: #f5f7ff;
+    border-radius: 2%;
+
+}
+.startsideknapperbillede{
+    width: 80%;
+    height: 80%;
+    object-fit: fill;
+}
+.topbarknap{
+    float: left;
+    height: max-content;
+    background-color: #d2d2d2;
+    padding: 10px 5px;
+    display: block;
+    border: #d2d2d2;
+}
+.topbarknap:hover{
+    background-color: #bcd3ae;
+    color: aliceblue;
+}
+.topbarsidenavn{
+    margin: 7px;
+    float: right;
+    font-family: Arial;
 }
