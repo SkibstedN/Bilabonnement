@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" xmlsn="http://www.w3.org/1999/xhtml">
     <title>Title</title>
     <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 </head>
@@ -16,6 +16,33 @@
 
     <a href="administrerFejlrapporterData">
         <button class="button">Administrer fejlrapporter</button></a>
+<div>
+    <h2>Udløbende Abonnementer</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Abonnement-Nr.</th>
+                <th>Vogn-Nr.</th>
+                <th>Kunde-Nr.</th>
+                <th>Pris pr/Måned</th>
+                <th>Max Km</th>
+                <th>Start Dato</th>
+                <th>Slut Dato</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr th:each="abonnement: ${abonnementliste}">
+            <td th:text="${abonnement.abonnementnummer}"/>
+            <td th:text="${abonnement.FK_vognnummer}"/>
+            <td th:text="${abonnement.kundenummer}"/>
+            <td th:text="${abonnement.prisprmaaned}"/>
+            <td th:text="${abonnement.maxkm}"/>
+            <td th:text="${abonnement.startdato}"/>
+            <td th:text="${abonnement.slutdato}"/>
+        </tr>
+        </tbody>
+    </table>
+</div>
 
 </body>
 </html>
