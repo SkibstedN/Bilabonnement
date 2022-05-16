@@ -3,11 +3,25 @@
 <head>
     <meta charset="UTF-8" xmlsn="http://www.w3.org/1999/xhtml">
     <title>Se Abonnementer</title>
+    <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 </head>
 <body>
 <a href="/">
-    <button>Tilbage</button>
-</a>
+    <button class="button">Tilbage</button></a>
+    <label>Sorter efter</label>
+
+    <form action="/sorterEfter/orderBy" method="post">
+        <select id="orderBy" name="orderBy">
+            <option value="abonnementnummer">Abonnement NR</option>
+            <option value="FK_vognnumer">Vogn NR</option>
+            <option value="kundenummer">Kunde NR</option>
+            <option value="prisprmaaned">Pris pr/Måned</option>
+            <option value="maxkm">Max KM</option>
+            <option value="startdato">Start Dato</option>
+            <option value="slutdato">Slut Dato</option>
+        </select>
+        <input type="submit" value="Sorter">
+    </form>
 <table>
     <thead>
     <tr>
@@ -17,7 +31,9 @@
         <th>Slut dato</th>
         <th>månedlig pris</th>
         <th>Max km</th>
-        <th>Kundenummer</th>
+        <a th:href="@{'/sorterEfter/'+${'kundenummer'}}">
+            <button>Kundenummer</button></a>
+
     </tr>
     </thead>
     <tbody>
@@ -31,13 +47,11 @@
         <td th:text="${abonnement.kundenummer}"/>
         <td>
             <a th:href="@{'/opdaterAbonnement/'+${abonnement.abonnementnummer}}">
-                <button>Opdater bil</button>
-            </a>
+                <button>Opdater Abonnement</button></a>
         </td>
         <td>
             <a th:href="@{'/sletAbonnement/'+${abonnement.abonnementnummer}}">
-                <button>Slet Abonnement</button>
-            </a>
+                <button>Slet Abonnement</button></a>
         </td>
     </tr>
     </tbody>
