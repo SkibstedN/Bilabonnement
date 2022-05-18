@@ -70,6 +70,21 @@ public class BilRepo {
         RowMapper<Abonnement> abonnementListe = new BeanPropertyRowMapper<>(Abonnement.class);
         return dbConnection.query(sqlSeAbonnement, abonnementListe);
     }
+    public List<Abonnement> sortByDate(){
+        String sqlSeAbonnement = "SELECT abonnementnummer, FK_vognnummer, startdato," +
+                " slutdato, prisprmaaned, maxkm, kundenummer " +
+                "FROM abonnement ORDER BY slutdato";
+        RowMapper<Abonnement> abonnementListe = new BeanPropertyRowMapper<>(Abonnement.class);
+        return dbConnection.query(sqlSeAbonnement, abonnementListe);
+    }
+
+    public List<Abonnement> sortBy(String sorterEfter){
+        String sqlSorter = "SELECT abonnementnummer, FK_vognnummer, startdato," +
+                " slutdato, prisprmaaned, maxkm, kundenummer " +
+                "FROM abonnement ORDER BY ?";
+        RowMapper<Abonnement> abonnementListe = new BeanPropertyRowMapper<>(Abonnement.class);
+        return dbConnection.query(sqlSorter, abonnementListe,sorterEfter);
+    }
 
     public Boolean sletAbonnement(int abonnementnummer){
         String sqlSletAbonnement ="DELETE FROM abonnement WHERE abonnementnummer = ?";

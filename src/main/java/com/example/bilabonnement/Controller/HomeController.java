@@ -23,8 +23,10 @@ BilService bilService;
         return "/startside";
     }
 
-    @GetMapping("/startsideDataregistrering")  //sender fra startsiden til dataregistrerings forsiden
-    public String startsideDataregistrering(){
+    @GetMapping("/startsideDataregistrering")  //sender fra startsiden til dataregistrerings forsiden. og indlæser abonnementerne til dashbordet
+    public String startsideDataregistrering(Model model){
+        List<Abonnement> abonnementListe = bilService.sortByDate();
+        model.addAttribute("abonnementliste", abonnementListe);
         return "/dataregistrering";
     }
 
@@ -126,7 +128,6 @@ BilService bilService;
         return "redirect:/SeAbonnement";
     }
 
-
     @GetMapping("/sletAbonnement/{abonnementnummer}")
     public String sletAbonnement(@PathVariable("abonnementnummer")int abonnementnummer){
         boolean sletabonnementet = bilService.sletAbonnement(abonnementnummer);
@@ -136,5 +137,11 @@ BilService bilService;
             return "redirect:/SeAbonnement";
         }
     }
-
+//FIXME denne controller virker ikke korrekt endnu
+    @PostMapping("/sorterEfter/{kundenummer}")
+    public String sortBy(@PathVariable("kundenummer") String sorterEfter ,Model model){
+        List<Abonnement> abonnementListe = bilService.sortBy(sorterEfter);
+        model.addAttribute("abonnementliste", abonnementListe);
+        return "redirect:/seAbonnement";
+    }
 }
