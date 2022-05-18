@@ -149,9 +149,9 @@ BilService bilService;
         return "/seAbonnement";
     }
 //FIXME denne controller virker ikke korrekt endnu
-    @PostMapping("/sorterEfter/{kundenummer}")
-    public String sortBy(@PathVariable("kundenummer") String sorterEfter ,Model model){
-        List<Abonnement> abonnementListe = bilService.sortBy(sorterEfter);
+    @GetMapping("/sorterEfterKundenummer")
+    public String sortBy(Model model){
+        List<Abonnement> abonnementListe = bilService.sortByKundenummer();
         model.addAttribute("abonnementliste", abonnementListe);
         return "/sorterAbonnement";
     }
