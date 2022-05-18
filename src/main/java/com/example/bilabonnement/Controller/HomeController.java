@@ -148,6 +148,18 @@ BilService bilService;
         model.addAttribute("abonnementliste", abonnementListe);
         return "/seAbonnement";
     }
+    @GetMapping("/sorterEfterAbonnementnummer")
+    public String sortByAbonnementnummero(Model model){
+        List<Abonnement> abonnementListe = bilService.sortByAbonnementnummer();
+        model.addAttribute("abonnementliste", abonnementListe);
+        return "/sorterAbonnement";
+    }
+    @GetMapping("/sorterEfterVognnummer")
+    public String sortByVognnummer(Model model){
+        List<Abonnement> abonnementListe = bilService.sortByVognnummer();
+        model.addAttribute("abonnementliste", abonnementListe);
+        return "/sorterAbonnement";
+    }
 
     @GetMapping("/sorterEfterKundenummer")
     public String sortByKundenummer(Model model){
@@ -183,6 +195,5 @@ BilService bilService;
         model.addAttribute("abonnementliste", abonnementListe);
         return "/sorterAbonnement";
     }
-
 
 }
