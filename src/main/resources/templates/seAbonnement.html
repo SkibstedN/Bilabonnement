@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:form="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8" xmlsn="http://www.w3.org/1999/xhtml">
     <title>Se Abonnementer</title>
@@ -11,7 +11,7 @@
     <label>Sorter efter</label>
 
     <form action="/sorterEfter/orderBy" method="post">
-        <select id="orderBy" name="orderBy">
+        <select name="orderBy">
             <option value="abonnementnummer">Abonnement NR</option>
             <option value="FK_vognnumer">Vogn NR</option>
             <option value="kundenummer">Kunde NR</option>
@@ -22,6 +22,10 @@
         </select>
         <input type="submit" value="Sorter">
     </form>
+    <form:select name="options" path="options" items="options">
+        <form:options value="" label="sorter efter"/>
+        <form:options items="&{options}" />
+    </form:select>
 <table>
     <thead>
     <tr>
@@ -31,8 +35,8 @@
         <th>Slut dato</th>
         <th>månedlig pris</th>
         <th>Max km</th>
-        <a th:href="@{'/sorterEfter/'+${'kundenummer'}}">
-            <button>Kundenummer</button></a>
+        <th><a th:href="@{'/sorterEfter/'+${'kundenummer'}}">
+            <button>Kundenummer</button></a></th>
 
     </tr>
     </thead>
