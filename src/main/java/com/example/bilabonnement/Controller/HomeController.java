@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -110,12 +111,7 @@ BilService bilService;
         return "/abonnementSide";
 
     }
-    @GetMapping("/SeAbonnement")
-    public String SeAbonnement(Model model) {
-        List<Abonnement> abonnementListe = bilService.seAbonnementListe();
-        model.addAttribute("abonnementliste", abonnementListe);
-        return "/seAbonnement";
-    }
+
     @GetMapping("/opdaterAbonnement/{abonnementnummer}")
     public  String opdaterAbonnement(@PathVariable("abonnementnummer") int abonnementnummer, Model model){
         //System.out.println(bilService.findBil(vognnummer).getVognnummer());
@@ -137,11 +133,28 @@ BilService bilService;
             return "redirect:/SeAbonnement";
         }
     }
+    @GetMapping("/SeAbonnement")
+    public String SeAbonnement(Model model) {
+        ArrayList<String> options = new ArrayList<>();
+        options.add("kundenummer");
+        options.add("FK_vognnummer");
+        options.add("kundenummer");
+        options.add("prisprmaaned");
+        options.add("maxkm");
+        options.add("startdato");
+        options.add("slutdato");
+        model.addAttribute("options",options);
+        List<Abonnement> abonnementListe = bilService.seAbonnementListe();
+        model.addAttribute("abonnementliste", abonnementListe);
+        return "/seAbonnement";
+    }
 //FIXME denne controller virker ikke korrekt endnu
     @PostMapping("/sorterEfter/{kundenummer}")
     public String sortBy(@PathVariable("kundenummer") String sorterEfter ,Model model){
         List<Abonnement> abonnementListe = bilService.sortBy(sorterEfter);
         model.addAttribute("abonnementliste", abonnementListe);
-        return "redirect:/seAbonnement";
+        return "/sorterAbonnement";
     }
+
+
 }
