@@ -148,10 +148,17 @@ BilService bilService;
         model.addAttribute("abonnementliste", abonnementListe);
         return "/seAbonnement";
     }
-//FIXME denne controller virker ikke korrekt endnu
+
     @GetMapping("/sorterEfterKundenummer")
-    public String sortBy(Model model){
+    public String sortByKundenummer(Model model){
         List<Abonnement> abonnementListe = bilService.sortByKundenummer();
+        model.addAttribute("abonnementliste", abonnementListe);
+        return "/sorterAbonnement";
+    }
+
+    @GetMapping("/sorterEfterMaxkm")
+    public String sortByMaxkm(Model model){
+        List<Abonnement> abonnementListe = bilService.sortByMaxkm();
         model.addAttribute("abonnementliste", abonnementListe);
         return "/sorterAbonnement";
     }
