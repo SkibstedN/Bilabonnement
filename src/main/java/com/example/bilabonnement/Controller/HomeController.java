@@ -163,5 +163,26 @@ BilService bilService;
         return "/sorterAbonnement";
     }
 
+    @GetMapping("/sorterEfterMånedspris")
+    public String sortByMånedspris(Model model){
+        List<Abonnement> abonnementListe = bilService.sortByMånedspris();
+        model.addAttribute("abonnementliste", abonnementListe);
+        return "/sorterAbonnement";
+    }
+
+    @GetMapping("/sorterEfterSlutdato")
+    public String sortBySlutdato(Model model){
+        List<Abonnement> abonnementListe = bilService.sortBySlutdato();
+        model.addAttribute("abonnementliste", abonnementListe);
+        return "/sorterAbonnement";
+    }
+
+    @GetMapping("/sorterEfterStartdato")
+    public String sortByStartdato(Model model){
+        List<Abonnement> abonnementListe = bilService.sortByStartdato();
+        model.addAttribute("abonnementliste", abonnementListe);
+        return "/sorterAbonnement";
+    }
+
 
 }
