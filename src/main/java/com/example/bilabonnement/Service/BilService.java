@@ -49,9 +49,10 @@ public class BilService {
     public List<Abonnement> sortByDate(){
         return bilRepo.sortByDate();
     }
-    public List<Abonnement> sortBy(String sorterEfter){
-        return bilRepo.sortBy(sorterEfter);
+    public List<Abonnement> sortByKundenummer(){
+        return bilRepo.sortByKundenummer();
     }
+
 }
 
 
