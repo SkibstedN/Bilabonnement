@@ -52,6 +52,9 @@ public class BilService {
     public List<Abonnement> sortByKundenummer(){
         return bilRepo.sortByKundenummer();
     }
+    public List<Abonnement> sortByMaxkm(){
+        return bilRepo.sortByMaxkm();
+    }
 
 }
 
