@@ -8,29 +8,19 @@
 <body>
 <a href="/">
     <button class="button">Tilbage</button></a>
-<label>Sorter efter</label>
-
-<form th:action="@{'/sorterEfter/'+${'orderBy'}}" method="post">
-    <select id="orderBy" name="orderBy">
-        <option value="abonnementnummer">Abonnement NR</option>
-        <option value="FK_vognnumer">Vogn NR</option>
-        <option value="kundenummer">Kunde NR</option>
-        <option value="prisprmaaned">Pris pr/Måned</option>
-        <option value="maxkm">Max KM</option>
-        <option value="startdato">Start Dato</option>
-        <option value="slutdato">Slut Dato</option>
-    </select>
-    <input type="submit" value="Sorter">
-</form>
 <table>
     <thead>
     <tr>
         <th>Abonnement Nummer</th>
         <th>Vognnummer</th>
-        <th>Start dato</th>
-        <th>Slut dato</th>
-        <th>månedlig pris</th>
-        <th>Max km</th>
+        <th><a href="/sorterEfterStartdato">
+            <button>Start dato</button></a></th>
+        <th><a href="/sorterEfterSlutdato">
+            <button>Slut dato</button></a></th>
+        <th><a href="/sorterEfterMånedspris">
+            <button>månedlig pris</button></a></th>
+        <th><a href="/sorterEfterMaxkm">
+            <button>Max Km</button></a></th>
         <th><a href="/sorterEfterKundenummer">
             <button>Kundenummer</button></a></th>
     </tr>

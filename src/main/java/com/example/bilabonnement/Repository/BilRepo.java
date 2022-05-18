@@ -92,6 +92,37 @@ public class BilRepo {
         RowMapper<Abonnement> abonnementListe = new BeanPropertyRowMapper<>(Abonnement.class);
         return dbConnection.query(sqlSorter, abonnementListe);
     }
+    public List<Abonnement> sortByMaxkm(){
+        String sqlSorter = "SELECT abonnementnummer, FK_vognnummer, startdato," +
+                " slutdato, prisprmaaned, maxkm, kundenummer " +
+                "FROM abonnement ORDER BY maxkm";
+        RowMapper<Abonnement> abonnementListe = new BeanPropertyRowMapper<>(Abonnement.class);
+        return dbConnection.query(sqlSorter, abonnementListe);
+    }
+
+    public List<Abonnement> sortByMånedspris(){
+        String sqlSorter = "SELECT abonnementnummer, FK_vognnummer, startdato," +
+                " slutdato, prisprmaaned, maxkm, kundenummer " +
+                "FROM abonnement ORDER BY prisprmaaned";
+        RowMapper<Abonnement> abonnementListe = new BeanPropertyRowMapper<>(Abonnement.class);
+        return dbConnection.query(sqlSorter, abonnementListe);
+    }
+
+    public List<Abonnement> sortBySlutdato(){
+        String sqlSorter = "SELECT abonnementnummer, FK_vognnummer, startdato, slutdato," +
+                "prisprmaaned, maxkm, kundenummer " +
+                "FROM abonnement ORDER BY slutdato";
+        RowMapper<Abonnement> abonnementListe = new BeanPropertyRowMapper<>(Abonnement.class);
+        return dbConnection.query(sqlSorter, abonnementListe);
+    }
+
+    public List<Abonnement> sortByStartdato(){
+        String sqlSorter = "SELECT abonnementnummer, FK_vognnummer, startdato, slutdato," +
+                "prisprmaaned, maxkm, kundenummer " +
+                "FROM abonnement ORDER BY startdato";
+        RowMapper<Abonnement> abonnementListe = new BeanPropertyRowMapper<>(Abonnement.class);
+        return dbConnection.query(sqlSorter, abonnementListe);
+    }
 
     public Boolean sletAbonnement(int abonnementnummer){
         String sqlSletAbonnement ="DELETE FROM abonnement WHERE abonnementnummer = ?";
