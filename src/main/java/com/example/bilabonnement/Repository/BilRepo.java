@@ -70,6 +70,21 @@ public class BilRepo {
         RowMapper<Abonnement> abonnementListe = new BeanPropertyRowMapper<>(Abonnement.class);
         return dbConnection.query(sqlSeAbonnement, abonnementListe);
     }
+    public Abonnement findAbonnement(int abonnementnummer){
+        String sqlFindbil="SELECT abonnementnummer, FK_vognnummer, startdato," +
+                " slutdato, prisprmaaned, maxkm, kundenummer"+
+                " FROM abonnement WHERE abonnementnummer = ?";
+        RowMapper <Abonnement> fundetAbonnement = new BeanPropertyRowMapper<>(Abonnement.class);
+        Abonnement abonnement= dbConnection.queryForObject(sqlFindbil,fundetAbonnement,abonnementnummer);
+        return abonnement;
+    }
+    public void opdaterAbonnement(Abonnement abonnement){
+        String sqlOpdaterAbonnement ="UPDATE abonnement SET FK_vognnummer = ?, startdato = ?, slutdato = ?," +
+                "prisprmaaned = ?, maxkm = ?, kundenummer = ? WHERE abonnementnummer = ?";
+        dbConnection.update(sqlOpdaterAbonnement,abonnement.getFK_vognnummer(),abonnement.getStartdato(),
+                abonnement.getSlutdato(),abonnement.getPrisprmaaned(),abonnement.getMaxkm(),abonnement.getKundenummer(),
+                abonnement.getAbonnementnummer());
+    }
     public List<Abonnement> sortByDate(){
         String sqlSeAbonnement = "SELECT abonnementnummer, FK_vognnummer, startdato," +
                 " slutdato, prisprmaaned, maxkm, kundenummer " +
@@ -85,7 +100,7 @@ public class BilRepo {
         RowMapper<Abonnement> abonnementListe = new BeanPropertyRowMapper<>(Abonnement.class);
         return dbConnection.query(sqlSorter, abonnementListe);
     }
-    public List<Abonnement> sortByVognnummer(){
+    public List<Abonnement> sortByFK_Vognnummer(){
         String sqlSorter = "SELECT abonnementnummer, FK_vognnummer, startdato," +
                 " slutdato, prisprmaaned, maxkm, kundenummer " +
                 "FROM abonnement ORDER BY FK_vognnummer";
@@ -136,18 +151,32 @@ public class BilRepo {
         return dbConnection.update(sqlSletAbonnement,abonnementnummer)>0;
 
     }
-    public Abonnement findAbonnement(int abonnementnummer){
-        String sqlFindbil="SELECT abonnementnummer, FK_vognnummer, startdato," +
-                " slutdato, prisprmaaned, maxkm, kundenummer"+
-                " FROM abonnement WHERE abonnementnummer = ?";
-        RowMapper <Abonnement> fundetAbonnement = new BeanPropertyRowMapper<>(Abonnement.class);
-        return dbConnection.queryForObject(sqlFindbil,fundetAbonnement,abonnementnummer);
+    public List<Bil> sortByVognnummer(){
+        String sqlSorter = "SELECT vognnummer, stelnummer, maerke, model, braendstoftype," +
+                " udstyrsniveau, odometer, hestekraefter, staalpris, co2udledning, kmprliter, registreringsafgift, bilstatus " +
+                "FROM biler ORDER BY vognnummer";
+        RowMapper<Bil> bilListe = new BeanPropertyRowMapper<>(Bil.class);
+        return dbConnection.query(sqlSorter, bilListe);
     }
-    public void opdaterAbonnement(Abonnement abonnement){
-        String sqlOpdaterAbonnement ="UPDATE abonnement SET FK_vognnummer = ?, startdato = ?, slutdato = ?," +
-                "prisprmaaned = ?, maxkm = ?, kundenummer = ? WHERE abonnementnummer = ?";
-        dbConnection.update(sqlOpdaterAbonnement,abonnement.getFK_vognnummer(),abonnement.getStartdato(),
-                abonnement.getSlutdato(),abonnement.getPrisprmaaned(),abonnement.getMaxkm(),abonnement.getKundenummer(),
-                abonnement.getAbonnementnummer());
+    public List<Bil> sortByStelnummer(){
+        String sqlSorter = "SELECT vognnummer, stelnummer, maerke, model, braendstoftype," +
+                " udstyrsniveau, odometer, hestekraefter, staalpris, co2udledning, kmprliter, registreringsafgift, bilstatus " +
+                "FROM biler ORDER BY stelnummer";
+        RowMapper<Bil> bilListe = new BeanPropertyRowMapper<>(Bil.class);
+        return dbConnection.query(sqlSorter, bilListe);
+    }
+    public List<Bil> sortByMærke(){
+        String sqlSorter = "SELECT vognnummer, stelnummer, maerke, model, braendstoftype," +
+                " udstyrsniveau, odometer, hestekraefter, staalpris, co2udledning, kmprliter, registreringsafgift, bilstatus " +
+                "FROM biler ORDER BY maerke";
+        RowMapper<Bil> bilListe = new BeanPropertyRowMapper<>(Bil.class);
+        return dbConnection.query(sqlSorter, bilListe);
+    }
+    public List<Bil> sortByModel(){
+        String sqlSorter = "SELECT vognnummer, stelnummer, maerke, model, braendstoftype," +
+                " udstyrsniveau, odometer, hestekraefter, staalpris, co2udledning, kmprliter, registreringsafgift, bilstatus " +
+                "FROM biler ORDER BY model";
+        RowMapper<Bil> bilListe = new BeanPropertyRowMapper<>(Bil.class);
+        return dbConnection.query(sqlSorter, bilListe);
     }
 }

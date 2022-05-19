@@ -61,8 +61,20 @@ public class BilService {
     public List<Abonnement> sortByAbonnementnummer(){
         return bilRepo.sortByAbonnementnummer();
     }
-    public List<Abonnement> sortByVognnummer(){
+    public List<Abonnement> sortByFK_Vognnummer(){
+        return bilRepo.sortByFK_Vognnummer();
+    }
+    public List<Bil> sortByVognnummer(){
         return bilRepo.sortByVognnummer();
+    }
+    public List<Bil> sortByStelnummer(){
+        return bilRepo.sortByStelnummer();
+    }
+    public List<Bil> sortByMærke(){
+        return bilRepo.sortByMærke();
+    }
+    public List<Bil> sortByModel(){
+        return bilRepo.sortByModel();
     }
 }
 

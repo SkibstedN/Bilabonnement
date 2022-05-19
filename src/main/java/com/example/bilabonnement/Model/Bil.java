@@ -16,6 +16,7 @@ public class Bil {
     private double registreringsafgift;
     private String bilstatus;
 
+
     //Her er en tom constructor som bliver brugt til oprette forbindelsen mellem klasserne
     public Bil(){}
 
@@ -132,6 +133,7 @@ public class Bil {
 
     public void setRegistreringsafgift(double registreringsafgift) {
         this.registreringsafgift = registreringsafgift;
+        this.bilstatus=bilstatus;
     }
 
     public String getBilstatus(){ return bilstatus;}
@@ -140,4 +142,5 @@ public class Bil {
         this.bilstatus = bilstatus;
     }
 }
+
 

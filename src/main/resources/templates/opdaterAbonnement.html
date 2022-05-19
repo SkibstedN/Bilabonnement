@@ -3,28 +3,41 @@
 <head>
     <meta charset="UTF-8" xmlns="http://www.w3.org/1999/xhtml">
     <title>Opdater Abonnement</title>
+    <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 </head>
 <body>
+<div class="topbar">
+    <a href="/"><button class="topbarknap">HOME</button></a>
+    <label class="topbarsidenavn" style="float:right">Opdater abonnement</label>
+    <a href="/administrerAbonnementer">
+        <button class="topbarknap">Tilbage</button></a>
+
+    <a href="administrerAbonnementer">
+        <button class="topbarknap">Administrer Abonnementer</button></a>
+
+    <a href="administrerBiler">
+        <button class="topbarknap">Administrer Biler</button></a>
+
+    <a href="administrerFejlrapporterData">
+        <button class="topbarknap">Administrer fejlrapporter</button></a>
+</div>
 <h2>Opdater Abonnement</h2>
-<div>
-
-
-
+<div class="div1">
     <form action="/opdaterAbonnement" method="post">
-        <label>AbonnementNummer</label>
-        <input type="text" readonly name="abonnementnummer" th:value="${abonnement.abonnementnummer}"/>
-        <label>Vognnummer</label>
-        <input type="text" id="vognnummer" name="vognnummer" th:value="${abonnement.vognnummer}"/>
-        <label>Start Dato</label>
-        <input type="text" id="startdato" name="startdato" th:value="${abonnement.startdato}"/>
-        <label>Slut Dato</label>
-        <input type="text" id="slutdato" name="slutdato" th:value="${abonnement.slutdato}"/>
-        <label>månedlige pris</label>
-        <input type="text" id="prisprmaaned" name="prisprmaaned" th:value="${abonnement.prisprmaaned}"/>
-        <label>Bilens max km</label>
-        <input type="text" id="maxkm" name="maxkm" th:value="${abonnement.maxkm}"/>
-        <label>Kundenummer</label>
-        <input type="text" id="kundenummer" name="kundenummer" th:value="${abonnement.kundenummer}"/>
+        <label class="label">AbonnementNummer</label>
+        <input class="input" type="text" readonly name="abonnementnummer" th:value="${abonnement.abonnementnummer}"/>
+        <label class="label">Vognnummer</label>
+        <input class="input" type="text" id="FK_vognnummer" name="FK_vognnummer" th:value="${abonnement.FK_vognnummer}"/>
+        <label class="label">Start Dato</label>
+        <input class="input" type="text" placeholder="YYYY-MM-DD" id="startdato" name="startdato" th:value="${abonnement.startdato}"/>
+        <label class="label">Slut Dato</label>
+        <input class="input" type="text" placeholder="YYYY-MM-DD" id="slutdato" name="slutdato" th:value="${abonnement.slutdato}"/>
+        <label class="label">månedlige pris</label>
+        <input class="input" type="text" id="prisprmaaned" name="prisprmaaned" th:value="${abonnement.prisprmaaned}"/>
+        <label class="label">Bilens max km</label>
+        <input class="input" type="text" id="maxkm" name="maxkm" th:value="${abonnement.maxkm}"/>
+        <label class="label">Kundenummer</label>
+        <input class="input" type="text" id="kundenummer" name="kundenummer" th:value="${abonnement.kundenummer}"/>
         <input type="submit" value="Gem Ændringer">
     </form>
 </div>

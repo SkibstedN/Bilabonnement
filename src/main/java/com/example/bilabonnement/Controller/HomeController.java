@@ -80,7 +80,7 @@ BilService bilService;
     @PostMapping("/opdaterBil")
     public String opdaterBil(@ModelAttribute Bil bil){
         bilService.opdaterBil(bil);
-      return "redirect:/administrerBiler";
+      return "redirect:/SeBil";
     }
     @GetMapping("/sletBil/{vognnummer}")
     public String sletBil(@PathVariable("vognnummer")int vognnummer, Model model){
@@ -158,9 +158,9 @@ BilService bilService;
         model.addAttribute("abonnementliste", abonnementListe);
         return "/sorterAbonnement";
     }
-    @GetMapping("/sorterEfterVognnummer")
+    @GetMapping("/sorterEfterFK_Vognnummer")
     public String sortByVognnummer(Model model){
-        List<Abonnement> abonnementListe = bilService.sortByVognnummer();
+        List<Abonnement> abonnementListe = bilService.sortByFK_Vognnummer();
         model.addAttribute("abonnementliste", abonnementListe);
         return "/sorterAbonnement";
     }
@@ -199,5 +199,30 @@ BilService bilService;
         model.addAttribute("abonnementliste", abonnementListe);
         return "/sorterAbonnement";
     }
+    @GetMapping("/sorterEfterVognnummer")
+    public String sortByVognnumer(Model model){
+            List<Bil> bilListe = bilService.sortByVognnummer();
+            model.addAttribute("billiste",bilListe);
+        return "/sorterBil";
+    }
+    @GetMapping("/sorterEfterStelnummer")
+    public String sortByStelnummer(Model model){
+        List<Bil> bilListe = bilService.sortByStelnummer();
+        model.addAttribute("billiste",bilListe);
+        return "/sorterBil";
+    }
+    @GetMapping("/sorterEfterMærke")
+    public String sortByMærke(Model model){
+        List<Bil> bilListe = bilService.sortByMærke();
+        model.addAttribute("billiste",bilListe);
+        return "/sorterBil";
+    }
+    @GetMapping("/sorterEfterModel")
+    public String sortByModel(Model model){
+        List<Bil> bilListe = bilService.sortByModel();
+        model.addAttribute("billiste",bilListe);
+        return "/sorterBil";
+    }
+
 
 }
