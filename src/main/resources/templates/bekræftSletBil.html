@@ -35,6 +35,7 @@
                 <th>Co2 udledning</th>
                 <th>Km pr Liter</th>
                 <th>Registreringsafgift</th>
+                <th>Bilens Tilgængelighed</th>
             </tr>
         </thead>
         <tbody>
@@ -51,6 +52,7 @@
                 <td th:text="${bilDerSkalSlettes.co2udledning}"/>
                 <td th:text="${bilDerSkalSlettes.kmprliter}"/>
                 <td th:text="${bilDerSkalSlettes.registreringsafgift}"/>
+                <td th:text="${bilDerSkalSlettes.bilstatus}"/>
             </tr>
         </tbody>
     </table>
