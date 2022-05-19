@@ -141,8 +141,7 @@ public class BilRepo {
                 " slutdato, prisprmaaned, maxkm, kundenummer"+
                 " FROM abonnement WHERE abonnementnummer = ?";
         RowMapper <Abonnement> fundetAbonnement = new BeanPropertyRowMapper<>(Abonnement.class);
-        Abonnement abonnement= dbConnection.queryForObject(sqlFindbil,fundetAbonnement,abonnementnummer);
-        return abonnement;
+        return dbConnection.queryForObject(sqlFindbil,fundetAbonnement,abonnementnummer);
     }
     public void opdaterAbonnement(Abonnement abonnement){
         String sqlOpdaterAbonnement ="UPDATE abonnement SET FK_vognnummer = ?, startdato = ?, slutdato = ?," +

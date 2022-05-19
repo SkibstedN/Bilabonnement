@@ -87,12 +87,23 @@ BilService bilService;
       return "redirect:/SeBil";
     }
     @GetMapping("/sletBil/{vognnummer}")
-    public String sletBil(@PathVariable("vognnummer")int vognnummer){
+    public String sletBil(@PathVariable("vognnummer")int vognnummer, Model model){
+        Bil bilDerSkalSlettes = bilService.findBil(vognnummer);
+        model.addAttribute("bilDerSkalSlettes",bilDerSkalSlettes);
+        return "/bekræftSletBil";
+    }
+    @GetMapping("/bekræftSletBilKnapNej")
+    public String bekræftSletBilNej(){
+        return "redirect:/SeBil";
+    }
+
+    @GetMapping("/bekræftSletBilKnap/{vognnummer}")
+    public String bekræfSletBil(@PathVariable("vognnummer") int vognnummer){
         boolean sletbilen = bilService.sletBil(vognnummer);
         if(sletbilen) {
             return "redirect:/SeBil";
         } else {
-            return "redirect:/SeBil";
+            return "redirect:/SeBil"; //skal sende en fejlmeddelelse hvis noget gik galt
         }
     }
 
@@ -125,12 +136,23 @@ BilService bilService;
     }
 
     @GetMapping("/sletAbonnement/{abonnementnummer}")
-    public String sletAbonnement(@PathVariable("abonnementnummer")int abonnementnummer){
+    public String sletAbonnement(@PathVariable("abonnementnummer")int abonnementnummer, Model model){
+        Abonnement abonnementDerSkalSlettes = bilService.findAbonnement(abonnementnummer);
+        model.addAttribute("abonnementDerSkalSlettes",abonnementDerSkalSlettes);
+        return "/bekræftSletAbonnement";
+        }
+
+    @GetMapping("/bekræftSletAbonnementKnapNej")
+    public String bekræftSletAbonnementNej(){
+        return "redirect:/administrerAbonnementer";
+    }
+    @GetMapping("/bekræftSletAbonnementKnap/{abonnementnummer}")
+    public String bekræfSleTAbonnement(@PathVariable("abonnementnummer") int abonnementnummer){
         boolean sletabonnementet = bilService.sletAbonnement(abonnementnummer);
         if(sletabonnementet) {
             return "redirect:/administrerAbonnementer";
         } else {
-            return "redirect:/administrerAbonnementer";
+            return "redirect:/administrerAbonnementer"; //skal sende en fejlmeddelelse hvis noget gik galt
         }
     }
 
