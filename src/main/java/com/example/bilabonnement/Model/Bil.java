@@ -14,13 +14,14 @@ public class Bil {
     private double co2udledning;
     private double kmprliter;
     private double registreringsafgift;
+    private String bilstatus;
 
     //Her er en tom constructor som bliver brugt til oprette forbindelsen mellem klasserne
     public Bil(){}
 
     public Bil( int vognnummer, String stelnummer, String maerke, String model, String braendstoftype,
                String udstyrsniveau, int odometer, int hestekraefter, double staalpris, double co2udledning,
-               double kmprliter, double registreringsafgift){
+               double kmprliter, double registreringsafgift, String bilstatus){
         this.vognnummer = vognnummer;
         this.stelnummer = stelnummer;
         this.maerke = maerke;
@@ -33,6 +34,7 @@ public class Bil {
         this.co2udledning = co2udledning;
         this.kmprliter = kmprliter;
         this.registreringsafgift = registreringsafgift;
+        this.bilstatus = bilstatus;
     }
 
     public int getVognnummer() {
@@ -130,6 +132,12 @@ public class Bil {
 
     public void setRegistreringsafgift(double registreringsafgift) {
         this.registreringsafgift = registreringsafgift;
+    }
+
+    public String getBilstatus(){ return bilstatus;}
+
+    public void setBilstatus(String bilstatus) {
+        this.bilstatus = bilstatus;
     }
 }
 
