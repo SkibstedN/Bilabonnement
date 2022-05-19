@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../stylesheet.css">
+</head>
+<body>
+<div class="topbar">
+    <a href="/"><button class="topbarknap">HOME</button></a>
+    <label class="topbarsidenavn" style="float:right">Liste over vores biler</label>
+    <a href="/administrerBiler">
+        <button class="topbarknap">Tilbage</button></a>
+    <a href="administrerAbonnementer">
+        <button class="topbarknap">Administrer Abonnementer</button></a>
+
+    <a href="administrerBiler">
+        <button class="topbarknap">Administrer Biler</button></a>
+
+    <a href="administrerFejlrapporterData">
+        <button class="topbarknap">Administrer fejlrapporter</button></a>
+</div>
+    <table>
+        <thead>
+            <tr>
+                <th>Vogn Nummer</th>
+                <th>Stel Nummer</th>
+                <th>Mærke</th>
+                <th>Model</th>
+                <th>Brændstoftype</th>
+                <th>Udstyrsniveau</th>
+                <th>Odometer</th>
+                <th>Hestekræfter</th>
+                <th>Stålpris</th>
+                <th>Co2 udledning</th>
+                <th>Km pr Liter</th>
+                <th>Registreringsafgift</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="tr">
+                <td th:text="${bilDerSkalSlettes.vognnummer}"/>
+                <td th:text="${bilDerSkalSlettes.stelnummer}"/>
+                <td th:text="${bilDerSkalSlettes.maerke}"/>
+                <td th:text="${bilDerSkalSlettes.model}"/>
+                <td th:text="${bilDerSkalSlettes.braendstoftype}"/>
+                <td th:text="${bilDerSkalSlettes.udstyrsniveau}"/>
+                <td th:text="${bilDerSkalSlettes.odometer}"/>
+                <td th:text="${bilDerSkalSlettes.hestekraefter}"/>
+                <td th:text="${bilDerSkalSlettes.staalpris}"/>
+                <td th:text="${bilDerSkalSlettes.co2udledning}"/>
+                <td th:text="${bilDerSkalSlettes.kmprliter}"/>
+                <td th:text="${bilDerSkalSlettes.registreringsafgift}"/>
+            </tr>
+        </tbody>
+    </table>
+    <div>
+        <p>Skal denne bil slettes?</p>
+        <a th:href="@{'/bekræftSletBilKnap/'+${bilDerSkalSlettes.vognnummer}}">
+            <button>Ja</button></a>
+        <a href="/bekræftSletBilKnapNej">
+            <button>Nej</button></a>
+    </div>
+</body>
+</html>
