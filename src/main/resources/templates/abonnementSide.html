@@ -3,15 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="./stylesheet.css">
 </head>
 <body>
-    <h1>Abonnement side</h1>
-    <a href="/opretAbonnement">
-        <button>Opret Abonnement</button>
-    </a>
-    <a href="/SeAbonnement">
-        <button>Se Abonnement</button>
-    </a>
+<div class="topbar">
+    <a href="/"><button class="topbarknap">HOME</button></a>
+    <label class="topbarsidenavn" style="float:right">Abonnement side</label>
+
+    <a href="administrerAbonnementer">
+        <button class="topbarknap">Administrer Abonnementer</button></a>
+
+    <a href="administrerBiler">
+        <button class="topbarknap">Administrer Biler</button></a>
+
+    <a href="administrerFejlrapporterData">
+        <button class="topbarknap">Administrer fejlrapporter</button></a>
+</div>
+<a href="/opretAbonnement">
+    <button class="button">Opret Abonnement</button></a>
+<table>
+    <thead>
+    <tr class="tr">
+        <th>SORTER EFTER:</th>
+        <th><a href="/sorterEfterAbonnementnummer">
+            <button>Abonnement nummer</button></a></th>
+        <th><a href="/sorterEfterVognnummer">
+            <button>Vognnummer</button></a></th>
+        <th><a href="/sorterEfterStartdato">
+            <button>Start dato</button></a></th>
+        <th><a href="/sorterEfterSlutdato">
+            <button>Slut dato</button></a></th>
+        <th><a href="/sorterEfterMånedspris">
+            <button>månedlig pris</button></a></th>
+        <th><a href="/sorterEfterMaxkm">
+            <button>Max Km</button></a></th>
+        <th><a href="/sorterEfterKundenummer">
+            <button>Kundenummer</button></a></th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="tr" th:each="abonnement: ${abonnementliste}">
+        <td></td>
+        <td th:text="${abonnement.abonnementnummer}"/>
+        <td th:text="${abonnement.FK_vognnummer}"/>
+        <td th:text="${abonnement.startdato}"/>
+        <td th:text="${abonnement.slutdato}"/>
+        <td th:text="${abonnement.prisprmaaned}"/>
+        <td th:text="${abonnement.maxkm}"/>
+        <td th:text="${abonnement.kundenummer}"/>
+        <td>
+            <a th:href="@{'/opdaterAbonnement/'+${abonnement.abonnementnummer}}">
+                <button>Opdater Abonnement</button></a>
+        </td>
+        <td>
+            <a th:href="@{'/sletAbonnement/'+${abonnement.abonnementnummer}}">
+                <button>Slet Abonnement</button></a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
 
 </body>
 </html>

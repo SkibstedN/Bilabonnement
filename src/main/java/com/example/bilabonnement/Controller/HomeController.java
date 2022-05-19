@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -42,7 +41,9 @@ BilService bilService;
     }
 
     @GetMapping("/administrerAbonnementer") //sender fra dataregistreringforsiden til abonnementsiden
-    public String administrerAbonnementer(){
+    public String administrerAbonnementer(Model model){
+        List<Abonnement> abonnementListe = bilService.seAbonnementListe();
+        model.addAttribute("abonnementliste", abonnementListe);
         return "/abonnementSide";
     }
 
@@ -108,46 +109,31 @@ BilService bilService;
     @PostMapping("/opretAbonnementKnap")
     public String opretAbonnementKnap(@ModelAttribute Abonnement abonnement){
         bilService.opretAbonnement(abonnement);
-        return "/abonnementSide";
+        return "redirect:/administrerAbonnementer";
 
     }
 
     @GetMapping("/opdaterAbonnement/{abonnementnummer}")
     public  String opdaterAbonnement(@PathVariable("abonnementnummer") int abonnementnummer, Model model){
-        //System.out.println(bilService.findBil(vognnummer).getVognnummer());
         model.addAttribute("abonnement",bilService.findAbonnement(abonnementnummer));
         return "/opdaterAbonnement";
     }
     @PostMapping("/opdaterAbonnement")
     public String opdaterAbonnement(@ModelAttribute Abonnement abonnement){
         bilService.opdaterAbonnement(abonnement);
-        return "redirect:/SeAbonnement";
+        return "redirect:/administrerAbonnementer";
     }
 
     @GetMapping("/sletAbonnement/{abonnementnummer}")
     public String sletAbonnement(@PathVariable("abonnementnummer")int abonnementnummer){
         boolean sletabonnementet = bilService.sletAbonnement(abonnementnummer);
         if(sletabonnementet) {
-            return "redirect:/SeAbonnement";
+            return "redirect:/administrerAbonnementer";
         } else {
-            return "redirect:/SeAbonnement";
+            return "redirect:/administrerAbonnementer";
         }
     }
-    @GetMapping("/SeAbonnement")
-    public String SeAbonnement(Model model) {
-        ArrayList<String> options = new ArrayList<>();
-        options.add("kundenummer");
-        options.add("FK_vognnummer");
-        options.add("kundenummer");
-        options.add("prisprmaaned");
-        options.add("maxkm");
-        options.add("startdato");
-        options.add("slutdato");
-        model.addAttribute("options",options);
-        List<Abonnement> abonnementListe = bilService.seAbonnementListe();
-        model.addAttribute("abonnementliste", abonnementListe);
-        return "/seAbonnement";
-    }
+
     @GetMapping("/sorterEfterAbonnementnummer")
     public String sortByAbonnementnummero(Model model){
         List<Abonnement> abonnementListe = bilService.sortByAbonnementnummer();
