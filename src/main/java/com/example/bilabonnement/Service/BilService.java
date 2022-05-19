@@ -76,6 +76,22 @@ public class BilService {
     public List<Bil> sortByModel(){
         return bilRepo.sortByModel();
     }
+
+    public List<Bil> sortByBrændstoftype(){
+        return bilRepo.sortByBrændstoftype();
+    }
+
+    public List<Bil> sortByUdstyrsniveau(){
+        return bilRepo.sortByUdstyrsniveau();
+    }
+
+    public List<Bil> sortByOdometer(){
+        return bilRepo.sortByOdometer();
+    }
+
+    public List<Bil> sortByHestekræfter(){
+        return bilRepo.sortByHestekræfter();
+    }
 }
 
 

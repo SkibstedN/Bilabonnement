@@ -224,5 +224,33 @@ BilService bilService;
         return "/sorterBil";
     }
 
+    @GetMapping("/sorterEfterBrændstoftype")
+    public String sortByBrændstoftype(Model model){
+        List<Bil> bilListe = bilService.sortByBrændstoftype();
+        model.addAttribute("billiste",bilListe);
+        return "/sorterBil";
+    }
+
+    @GetMapping("/sorterEfterUdstyrsniveau")
+    public String sortByUdstyrsniveau(Model model){
+        List<Bil> bilListe = bilService.sortByUdstyrsniveau();
+        model.addAttribute("billiste",bilListe);
+        return "/sorterBil";
+    }
+
+    @GetMapping("/sorterEfterOdometer")
+    public String sortByOdometer(Model model){
+        List<Bil> bilListe = bilService.sortByOdometer();
+        model.addAttribute("billiste",bilListe);
+        return "/sorterBil";
+    }
+
+    @GetMapping("/sorterEfterHestekræfter")
+    public String sortByHestekræfter(Model model){
+        List<Bil> bilListe = bilService.sortByHestekræfter();
+        model.addAttribute("billiste",bilListe);
+        return "/sorterBil";
+    }
+
 
 }
