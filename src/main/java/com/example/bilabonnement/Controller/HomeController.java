@@ -48,7 +48,9 @@ BilService bilService;
     }
 
     @GetMapping("/administrerBiler") //sender fra dataregistreringforsiden til bilsiden
-    public String administrerBiler(){
+    public String administrerBiler(Model model){
+        List<Bil> bilListe = bilService.seBilListe();
+        model.addAttribute("billiste",bilListe);
         return "/bilSide";
     }
 
@@ -66,15 +68,9 @@ BilService bilService;
     @PostMapping("/opretBil")
     public String opretBil(@ModelAttribute Bil bil){
         bilService.opretBil(bil);
-        return "/bekræftOpret";
+        return "redirect:/administrerBiler";
     }
 
-    @GetMapping("/SeBil") // sender browseren fra bilsiden til seBil.html
-    public String SeBil(Model model){
-        List<Bil> bilListe = bilService.seBilListe();
-        model.addAttribute("billiste", bilListe);
-        return "/seBil";
-    }
     @GetMapping("/opdaterBil/{vognnummer}")
     public  String opdaterBil(@PathVariable("vognnummer") int vognnummer, Model model){
         //System.out.println(bilService.findBil(vognnummer).getVognnummer());
@@ -84,7 +80,7 @@ BilService bilService;
     @PostMapping("/opdaterBil")
     public String opdaterBil(@ModelAttribute Bil bil){
         bilService.opdaterBil(bil);
-      return "redirect:/SeBil";
+      return "redirect:/administrerBiler";
     }
     @GetMapping("/sletBil/{vognnummer}")
     public String sletBil(@PathVariable("vognnummer")int vognnummer, Model model){
@@ -94,16 +90,16 @@ BilService bilService;
     }
     @GetMapping("/bekræftSletBilKnapNej")
     public String bekræftSletBilNej(){
-        return "redirect:/SeBil";
+        return "redirect:/administrerBiler";
     }
 
     @GetMapping("/bekræftSletBilKnap/{vognnummer}")
     public String bekræfSletBil(@PathVariable("vognnummer") int vognnummer){
         boolean sletbilen = bilService.sletBil(vognnummer);
         if(sletbilen) {
-            return "redirect:/SeBil";
+            return "redirect:/administrerBiler";
         } else {
-            return "redirect:/SeBil"; //skal sende en fejlmeddelelse hvis noget gik galt
+            return "redirect:/administrerBiler"; //skal sende en fejlmeddelelse hvis noget gik galt
         }
     }
 
