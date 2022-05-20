@@ -232,4 +232,12 @@ public class BilRepo {
         RowMapper<Bil> bilListe = new BeanPropertyRowMapper<>(Bil.class);
         return dbConnection.query(sqlSorter, bilListe);
     }
+
+    public List<Bil> visTilgængeligeBiler() {
+        String sqlBilstatus = "SELECT vognnummer, stelnummer, maerke, model, braendstoftype," +
+                " udstyrsniveau, odometer, hestekraefter, staalpris, co2udledning, kmprliter, registreringsafgift, bilstatus " +
+                "FROM biler WHERE bilstatus = 'tilgængelig'";
+        RowMapper<Bil> bilListe = new BeanPropertyRowMapper<>(Bil.class);
+        return dbConnection.query(sqlBilstatus, bilListe);
+    }
 }

@@ -102,6 +102,8 @@ public class BilService {
         return bilRepo.sortByRegistreringsafgift();
     }
 
+    public List<Bil> visTilgængeligeBiler() { return bilRepo.visTilgængeligeBiler();}
+
 }
 
 

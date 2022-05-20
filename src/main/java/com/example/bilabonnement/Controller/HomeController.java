@@ -114,7 +114,17 @@ BilService bilService;
     }
 
     @PostMapping("/opretAbonnementKnap")
-    public String opretAbonnementKnap(@ModelAttribute Abonnement abonnement){
+    public String opretAbonnementKnap(@ModelAttribute Abonnement abonnement, Model model){
+        model.addAttribute("abonnement",abonnement);
+        List<Bil> bilListe = bilService.visTilgængeligeBiler();
+        model.addAttribute("billiste", bilListe);
+        return "/tilgængeligeBiler";
+
+    }
+
+    @PostMapping("/finalOpretAbonnementKnap/{vognnummer}")
+    public String finalOpretAbonnement(@PathVariable("vognnummer") int vognnummer,@ModelAttribute Abonnement abonnement){
+        abonnement.setFK_vognnummer(vognnummer);
         bilService.opretAbonnement(abonnement);
         return "redirect:/administrerAbonnementer";
 
@@ -143,7 +153,7 @@ BilService bilService;
         return "redirect:/administrerAbonnementer";
     }
     @GetMapping("/bekræftSletAbonnementKnap/{abonnementnummer}")
-    public String bekræfSleTAbonnement(@PathVariable("abonnementnummer") int abonnementnummer){
+    public String bekræftSletAbonnement(@PathVariable("abonnementnummer") int abonnementnummer){
         boolean sletabonnementet = bilService.sletAbonnement(abonnementnummer);
         if(sletabonnementet) {
             return "redirect:/administrerAbonnementer";
