@@ -85,13 +85,6 @@ public class BilRepo {
                 abonnement.getSlutdato(),abonnement.getPrisprmaaned(),abonnement.getMaxkm(),abonnement.getKundenummer(),
                 abonnement.getAbonnementnummer());
     }
-    public List<Abonnement> sortByDate(){
-        String sqlSeAbonnement = "SELECT abonnementnummer, FK_vognnummer, startdato," +
-                " slutdato, prisprmaaned, maxkm, kundenummer " +
-                "FROM abonnement ORDER BY slutdato";
-        RowMapper<Abonnement> abonnementListe = new BeanPropertyRowMapper<>(Abonnement.class);
-        return dbConnection.query(sqlSeAbonnement, abonnementListe);
-    }
 
     public List<Abonnement> sortByAbonnementnummer(){
         String sqlSorter = "SELECT abonnementnummer, FK_vognnummer, startdato," +

@@ -45,10 +45,6 @@ public class BilService {
     public void opdaterAbonnement(Abonnement abonnement){
       bilRepo.opdaterAbonnement(abonnement);
     }
-
-    public List<Abonnement> sortByDate(){
-        return bilRepo.sortByDate();
-    }
     public List<Abonnement> sortByKundenummer(){
         return bilRepo.sortByKundenummer();
     }

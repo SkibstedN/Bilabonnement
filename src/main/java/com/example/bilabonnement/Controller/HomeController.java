@@ -25,7 +25,7 @@ BilService bilService;
 
     @GetMapping("/startsideDataregistrering")  //sender fra startsiden til dataregistrerings forsiden. og indlæser abonnementerne til dashbordet
     public String startsideDataregistrering(Model model){
-        List<Abonnement> abonnementListe = bilService.sortByDate();
+        List<Abonnement> abonnementListe = bilService.sortBySlutdato();
         model.addAttribute("abonnementliste", abonnementListe);
         return "/dataregistrering";
     }
@@ -153,13 +153,13 @@ BilService bilService;
     }
 
     @GetMapping("/sorterEfterAbonnementnummer")
-    public String sortByAbonnementnummero(Model model){
+    public String sortByAbonnementnummer(Model model){
         List<Abonnement> abonnementListe = bilService.sortByAbonnementnummer();
         model.addAttribute("abonnementliste", abonnementListe);
         return "/sorterAbonnement";
     }
     @GetMapping("/sorterEfterFK_Vognnummer")
-    public String sortByVognnummer(Model model){
+    public String sortByFKVognnummer(Model model){
         List<Abonnement> abonnementListe = bilService.sortByFK_Vognnummer();
         model.addAttribute("abonnementliste", abonnementListe);
         return "/sorterAbonnement";
@@ -200,7 +200,7 @@ BilService bilService;
         return "/sorterAbonnement";
     }
     @GetMapping("/sorterEfterVognnummer")
-    public String sortByVognnumer(Model model){
+    public String sortByVognnummer(Model model){
             List<Bil> bilListe = bilService.sortByVognnummer();
             model.addAttribute("billiste",bilListe);
         return "/sorterBil";
