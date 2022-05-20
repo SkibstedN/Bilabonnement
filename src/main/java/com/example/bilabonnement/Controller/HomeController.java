@@ -40,14 +40,14 @@ BilService bilService;
         return "/forretningsudviklere";
     }
 
-    @GetMapping("/administrerAbonnementer") //sender fra dataregistreringforsiden til abonnementsiden
+    @GetMapping("/administrerAbonnementer") //sender brugeren fra dataregistreringforsiden til abonnementsiden
     public String administrerAbonnementer(Model model){
         List<Abonnement> abonnementListe = bilService.seAbonnementListe();
         model.addAttribute("abonnementliste", abonnementListe);
         return "/abonnementSide";
     }
 
-    @GetMapping("/administrerBiler") //sender fra dataregistreringforsiden til bilsiden
+    @GetMapping("/administrerBiler") //sender brugeren fra dataregistreringforsiden til bilsiden
     public String administrerBiler(Model model){
         List<Bil> bilListe = bilService.seBilListe();
         model.addAttribute("billiste",bilListe);
@@ -248,6 +248,30 @@ BilService bilService;
     @GetMapping("/sorterEfterHestekræfter")
     public String sortByHestekræfter(Model model){
         List<Bil> bilListe = bilService.sortByHestekræfter();
+        model.addAttribute("billiste",bilListe);
+        return "/sorterBil";
+    }
+    @GetMapping("/sorterEfterStålpris")
+    public String sortByStålpris(Model model){
+        List<Bil> bilListe = bilService.sortByStålpris();
+        model.addAttribute("billiste",bilListe);
+        return "/sorterBil";
+    }
+    @GetMapping("/sorterEfterCo2udledning")
+    public String sortByCo2udledning(Model model){
+        List<Bil> bilListe = bilService.sortByCo2udledning();
+        model.addAttribute("billiste",bilListe);
+        return "/sorterBil";
+    }
+    @GetMapping("/sorterEfterKMperliter")
+    public String sortByKMperliter(Model model){
+        List<Bil> bilListe = bilService.sortByKMperliter();
+        model.addAttribute("billiste",bilListe);
+        return "/sorterBil";
+    }
+    @GetMapping("/sorterEfterRegistreringsafgift")
+    public String sortByRegistreringsafgift(Model model){
+        List<Bil> bilListe = bilService.sortByRegistreringsafgift();
         model.addAttribute("billiste",bilListe);
         return "/sorterBil";
     }

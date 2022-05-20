@@ -92,6 +92,24 @@ public class BilService {
     public List<Bil> sortByHestekræfter(){
         return bilRepo.sortByHestekræfter();
     }
+
+    public List<Bil> sortByStålpris(){
+        return bilRepo.sortByStålpris();
+    }
+    public List<Bil> sortByCo2udledning(){
+        return bilRepo.sortByCo2udledning();
+    }
+    public List<Bil> sortByKMperliter(){
+        return bilRepo.sortByKMperliter();
+    }
+    public List<Bil> sortByRegistreringsafgift(){
+        return bilRepo.sortByRegistreringsafgift();
+    }
+
 }
+
+
+
+
 
 

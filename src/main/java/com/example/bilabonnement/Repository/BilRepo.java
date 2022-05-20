@@ -211,4 +211,32 @@ public class BilRepo {
         RowMapper<Bil> bilListe = new BeanPropertyRowMapper<>(Bil.class);
         return dbConnection.query(sqlSorter, bilListe);
     }
+    public List<Bil> sortByStålpris(){
+        String sqlSorter = "SELECT vognnummer, stelnummer, maerke, model, braendstoftype," +
+                " udstyrsniveau, odometer, hestekraefter, staalpris, co2udledning, kmprliter, registreringsafgift, bilstatus " +
+                "FROM biler ORDER BY staalpris";
+        RowMapper<Bil> bilListe = new BeanPropertyRowMapper<>(Bil.class);
+        return dbConnection.query(sqlSorter, bilListe);
+    }
+    public List<Bil> sortByCo2udledning(){
+        String sqlSorter = "SELECT vognnummer, stelnummer, maerke, model, braendstoftype," +
+                " udstyrsniveau, odometer, hestekraefter, staalpris, co2udledning, kmprliter, registreringsafgift, bilstatus " +
+                "FROM biler ORDER BY co2udledning";
+        RowMapper<Bil> bilListe = new BeanPropertyRowMapper<>(Bil.class);
+        return dbConnection.query(sqlSorter, bilListe);
+    }
+    public List<Bil> sortByKMperliter(){
+        String sqlSorter = "SELECT vognnummer, stelnummer, maerke, model, braendstoftype," +
+                " udstyrsniveau, odometer, hestekraefter, staalpris, co2udledning, kmprliter, registreringsafgift, bilstatus " +
+                "FROM biler ORDER BY kmprliter";
+        RowMapper<Bil> bilListe = new BeanPropertyRowMapper<>(Bil.class);
+        return dbConnection.query(sqlSorter, bilListe);
+    }
+    public List<Bil> sortByRegistreringsafgift(){
+        String sqlSorter = "SELECT vognnummer, stelnummer, maerke, model, braendstoftype," +
+                " udstyrsniveau, odometer, hestekraefter, staalpris, co2udledning, kmprliter, registreringsafgift, bilstatus " +
+                "FROM biler ORDER BY registreringsafgift";
+        RowMapper<Bil> bilListe = new BeanPropertyRowMapper<>(Bil.class);
+        return dbConnection.query(sqlSorter, bilListe);
+    }
 }
