@@ -108,10 +108,13 @@
 }
 
 .indhold > input{
-    width: 100%;
+    width: 95%;
     padding: 0.7em;
     margin-bottom: 0.5rem;
     position: center;
+}
+.indhold > [type="submit"]{
+    width: 95%;
 }
 
 @media (min-width: 400px) {
