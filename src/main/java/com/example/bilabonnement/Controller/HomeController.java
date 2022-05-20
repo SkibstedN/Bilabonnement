@@ -80,7 +80,7 @@ BilService bilService;
     @PostMapping("/opdaterBil")
     public String opdaterBil(@ModelAttribute Bil bil){
         bilService.opdaterBil(bil);
-      return "redirect:/SeBil";
+      return "redirect:/administrerBiler";
     }
     @GetMapping("/sletBil/{vognnummer}")
     public String sletBil(@PathVariable("vognnummer")int vognnummer, Model model){
