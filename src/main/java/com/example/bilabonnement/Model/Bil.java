@@ -133,7 +133,6 @@ public class Bil {
 
     public void setRegistreringsafgift(double registreringsafgift) {
         this.registreringsafgift = registreringsafgift;
-        this.bilstatus=bilstatus;
     }
 
     public String getBilstatus(){ return bilstatus;}
