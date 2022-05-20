@@ -269,7 +269,7 @@ BilService bilService;
         model.addAttribute("billiste",bilListe);
         return "/sorterBil";
     }
-    @GetMapping("/sorterEfterRegistreringsafgift")
+    @GetMapping("/sorterEfterRegistreringsafgift")   //Seder brugeren fra
     public String sortByRegistreringsafgift(Model model){
         List<Bil> bilListe = bilService.sortByRegistreringsafgift();
         model.addAttribute("billiste",bilListe);
