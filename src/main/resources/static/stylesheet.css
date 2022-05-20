@@ -87,34 +87,47 @@
 .form button:hover {
     background: floralwhite;
 }
-.label {
+.form label {
     text-align: left;
     display: block;
     padding: 0.5em 0.5em 0.5em 10px;
 }
-.input {
+.form input {
     width: 100%;
     padding: 0.7em;
     margin-bottom: 0.5rem;
     position: center;
 }
-.input:focus {
+.form input:focus {
     outline: 3px solid #5d676e;
 }
+.indhold > label{
+    text-align: left;
+    display: block;
+    padding: 0.5em 0.5em 0.5em 10px;
+}
+
+.indhold > input{
+    width: 100%;
+    padding: 0.7em;
+    margin-bottom: 0.5rem;
+    position: center;
+}
+
 @media (min-width: 400px) {
     .form {
         position: center;
         overflow: hidden;
     }
-    .label {
+    .form label {
         width: 200px;
     }
-    .input {
+    .form input {
         position: center;
         width: calc(100% - 25px);
     }
     .button {
-        width: calc(100% - 177px);
+        width: 100%;
     }
     .div1{
         background-color: #f5f7ff;
@@ -123,5 +136,7 @@
         right: 30%;
         width: calc(80% - 600px);
         padding: 25px;
+
     }
+
 }
