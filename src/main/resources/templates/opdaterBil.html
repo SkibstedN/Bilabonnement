@@ -21,8 +21,8 @@
     <a href="/administrerFejlrapporterData">
         <button class="topbarknap">Administrer fejlrapporter</button></a>
 </div>
-<div class="div1">
-    <form action="/opdaterBil" method="post">
+<div class="div1 indhold">
+    <form class="form" action="/opdaterBil" method="post">
         <label>Vognnummer</label>
         <input type="text" readonly name="vognnummer" th:value="${bil.vognnummer}"/>
         <label>Bilens Stelnummer</label>
