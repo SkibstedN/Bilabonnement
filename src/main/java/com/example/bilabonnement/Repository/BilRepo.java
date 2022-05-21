@@ -2,6 +2,7 @@ package com.example.bilabonnement.Repository;
 
 import com.example.bilabonnement.Model.Abonnement;
 import com.example.bilabonnement.Model.Bil;
+import com.example.bilabonnement.Model.Kunde;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -58,21 +59,21 @@ public class BilRepo {
 
     public void opretAbonnement(Abonnement abonnement){
         String sqlOpretAbonnement ="INSERT INTO abonnement ( abonnementnummer, FK_vognnummer, startdato," +
-                " slutdato, prisprmaaned, maxkm, kundenummer)" +
+                " slutdato, prisprmaaned, maxkm, FK_kundenummer)" +
                 "VALUES (?,?,?,?,?,?,?)";
         dbConnection.update(sqlOpretAbonnement,abonnement.getAbonnementnummer(),abonnement.getFK_vognnummer(),abonnement.getStartdato(),
-                abonnement.getSlutdato(),abonnement.getPrisprmaaned(),abonnement.getMaxkm(),abonnement.getKundenummer());
+                abonnement.getSlutdato(),abonnement.getPrisprmaaned(),abonnement.getMaxkm(),abonnement.getFK_Kundenummer());
     }
     public List<Abonnement> seAbonnementListe(){
         String sqlSeAbonnement = "SELECT abonnementnummer, FK_vognnummer, startdato," +
-                " slutdato, prisprmaaned, maxkm, kundenummer " +
+                " slutdato, prisprmaaned, maxkm, FK_kundenummer " +
                 "FROM abonnement ";
         RowMapper<Abonnement> abonnementListe = new BeanPropertyRowMapper<>(Abonnement.class);
         return dbConnection.query(sqlSeAbonnement, abonnementListe);
     }
     public Abonnement findAbonnement(int abonnementnummer){
         String sqlFindbil="SELECT abonnementnummer, FK_vognnummer, startdato," +
-                " slutdato, prisprmaaned, maxkm, kundenummer"+
+                " slutdato, prisprmaaned, maxkm, FK_kundenummer"+
                 " FROM abonnement WHERE abonnementnummer = ?";
         RowMapper <Abonnement> fundetAbonnement = new BeanPropertyRowMapper<>(Abonnement.class);
         Abonnement abonnement= dbConnection.queryForObject(sqlFindbil,fundetAbonnement,abonnementnummer);
@@ -80,29 +81,29 @@ public class BilRepo {
     }
     public void opdaterAbonnement(Abonnement abonnement){
         String sqlOpdaterAbonnement ="UPDATE abonnement SET FK_vognnummer = ?, startdato = ?, slutdato = ?," +
-                "prisprmaaned = ?, maxkm = ?, kundenummer = ? WHERE abonnementnummer = ?";
+                "prisprmaaned = ?, maxkm = ?, FK_kundenummer = ? WHERE abonnementnummer = ?";
         dbConnection.update(sqlOpdaterAbonnement,abonnement.getFK_vognnummer(),abonnement.getStartdato(),
-                abonnement.getSlutdato(),abonnement.getPrisprmaaned(),abonnement.getMaxkm(),abonnement.getKundenummer(),
+                abonnement.getSlutdato(),abonnement.getPrisprmaaned(),abonnement.getMaxkm(),abonnement.getFK_Kundenummer(),
                 abonnement.getAbonnementnummer());
     }
 
     public List<Abonnement> sortByAbonnementnummer(){
         String sqlSorter = "SELECT abonnementnummer, FK_vognnummer, startdato," +
-                " slutdato, prisprmaaned, maxkm, kundenummer " +
+                " slutdato, prisprmaaned, maxkm, FK_kundenummer " +
                 "FROM abonnement ORDER BY abonnementnummer";
         RowMapper<Abonnement> abonnementListe = new BeanPropertyRowMapper<>(Abonnement.class);
         return dbConnection.query(sqlSorter, abonnementListe);
     }
     public List<Abonnement> sortByFK_Vognnummer(){
         String sqlSorter = "SELECT abonnementnummer, FK_vognnummer, startdato," +
-                " slutdato, prisprmaaned, maxkm, kundenummer " +
+                " slutdato, prisprmaaned, maxkm, FK_kundenummer " +
                 "FROM abonnement ORDER BY FK_vognnummer";
         RowMapper<Abonnement> abonnementListe = new BeanPropertyRowMapper<>(Abonnement.class);
         return dbConnection.query(sqlSorter, abonnementListe);
     }
     public List<Abonnement> sortByKundenummer(){
         String sqlSorter = "SELECT abonnementnummer, FK_vognnummer, startdato," +
-                " slutdato, prisprmaaned, maxkm, kundenummer " +
+                " slutdato, prisprmaaned, maxkm, FK_kundenummer " +
                 "FROM abonnement ORDER BY kundenummer";
         RowMapper<Abonnement> abonnementListe = new BeanPropertyRowMapper<>(Abonnement.class);
         return dbConnection.query(sqlSorter, abonnementListe);
@@ -110,7 +111,7 @@ public class BilRepo {
 
     public List<Abonnement> sortByMånedspris(){
         String sqlSorter = "SELECT abonnementnummer, FK_vognnummer, startdato," +
-                " slutdato, prisprmaaned, maxkm, kundenummer " +
+                " slutdato, prisprmaaned, maxkm, FK_kundenummer " +
                 "FROM abonnement ORDER BY prisprmaaned";
         RowMapper<Abonnement> abonnementListe = new BeanPropertyRowMapper<>(Abonnement.class);
         return dbConnection.query(sqlSorter, abonnementListe);
@@ -118,7 +119,7 @@ public class BilRepo {
 
     public List<Abonnement> sortBySlutdato(){
         String sqlSorter = "SELECT abonnementnummer, FK_vognnummer, startdato, slutdato," +
-                "prisprmaaned, maxkm, kundenummer " +
+                "prisprmaaned, maxkm, FK_kundenummer " +
                 "FROM abonnement ORDER BY slutdato";
         RowMapper<Abonnement> abonnementListe = new BeanPropertyRowMapper<>(Abonnement.class);
         return dbConnection.query(sqlSorter, abonnementListe);
@@ -126,14 +127,14 @@ public class BilRepo {
 
     public List<Abonnement> sortByStartdato(){
         String sqlSorter = "SELECT abonnementnummer, FK_vognnummer, startdato, slutdato," +
-                "prisprmaaned, maxkm, kundenummer " +
+                "prisprmaaned, maxkm, FK_kundenummer " +
                 "FROM abonnement ORDER BY startdato";
         RowMapper<Abonnement> abonnementListe = new BeanPropertyRowMapper<>(Abonnement.class);
         return dbConnection.query(sqlSorter, abonnementListe);
     }
     public List<Abonnement> sortByMaxkm(){
         String sqlSorter = "SELECT abonnementnummer, FK_vognnummer, startdato," +
-                " slutdato, prisprmaaned, maxkm, kundenummer " +
+                " slutdato, prisprmaaned, maxkm, FK_kundenummer " +
                 "FROM abonnement ORDER BY maxkm";
         RowMapper<Abonnement> abonnementListe = new BeanPropertyRowMapper<>(Abonnement.class);
         return dbConnection.query(sqlSorter, abonnementListe);
@@ -240,4 +241,40 @@ public class BilRepo {
         RowMapper<Bil> bilListe = new BeanPropertyRowMapper<>(Bil.class);
         return dbConnection.query(sqlBilstatus, bilListe);
     }
+
+    public List<Kunde> seKundeListe(){
+        String sqlSeKunder = "SELECT kundenummer, fornavn, efternavn, tlfnummer, adresse," +
+                "email " +
+                "FROM kunder ";
+        RowMapper<Kunde> kundeListe = new BeanPropertyRowMapper<>(Kunde.class);
+        return dbConnection.query(sqlSeKunder, kundeListe);
+    }
+    public void opretKunde(Kunde kunde){
+        String sqlOpretKunde ="INSERT INTO kunder ( kundenummer, fornavn, efternavn," +
+                " tlfnummer, adresse, email)" +
+                "VALUES (?,?,?,?,?,?)";
+        dbConnection.update(sqlOpretKunde,kunde.getKundenummer(),kunde.getFornavn(),
+                kunde.getEfternavn(), kunde.getTlfnummer(),kunde.getAdresse(),kunde.getEmail());
+    }
+    public Kunde findKunde(int kundenummer){
+        String sqlFindKunde="SELECT kundenummer, fornavn, efternavn, tlfnummer, adresse," +
+                " email " +
+                " FROM kunder WHERE kundenummer = ?";
+        RowMapper <Kunde> fundetKunde = new BeanPropertyRowMapper<>(Kunde.class);
+        Kunde kunde= dbConnection.queryForObject(sqlFindKunde,fundetKunde,kundenummer);
+        return kunde;
+    }
+    public void opdaterKunde(Kunde kunde){
+        String sqlOpdaterKunde= "UPDATE kunder SET fornavn = ?, efternavn = ?, " +
+                "tlfnummer = ?, adresse = ?, email = ? " +
+                "WHERE kundenummer = ? ";
+        dbConnection.update(sqlOpdaterKunde,kunde.getFornavn(),kunde.getEfternavn()
+        ,kunde.getTlfnummer(),kunde.getAdresse(),kunde.getEmail(),kunde.getKundenummer());
+    }
+    public Boolean sletKunde(int kundenummer){
+        String sqlSletKunde ="DELETE FROM kunder WHERE kundenummer = ?";
+        return dbConnection.update(sqlSletKunde,kundenummer)>0;
+
+    }
+
 }

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../stylesheet.css">
+</head>
+<body>
+<div class="topbar">
+    <a href="/"><button class="topbarknap">HOME</button></a>
+    <label class="topbarsidenavn" style="float:right">Abonnement side</label>
+
+    <a href="administrerAbonnementer">
+        <button class="topbarknap">Administrer Abonnementer</button></a>
+
+    <a href="administrerBiler">
+        <button class="topbarknap">Administrer Biler</button></a>
+
+    <a href="administrerFejlrapporterData">
+        <button class="topbarknap">Administrer fejlrapporter</button></a>
+</div>
+<a href="/opretKunde">
+    <button class="button">Opret Kunde</button></a>
+<table>
+    <thead>
+    <tr class="tr">
+        <th>Kundenummer</th>
+        <th>Fornavn</th>
+        <th>Efternavn</th>
+        <th>Tlf. nummer</th>
+        <th>Adresse</th>
+        <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr class="tr" th:each="kunde: ${kundeliste}">
+        <td></td>
+        <td th:text="${kunde.kundenummer}"/>
+        <td th:text="${kunde.fornavn}"/>
+        <td th:text="${kunde.efternavn}"/>
+        <td th:text="${kunde.tlfnummer}"/>
+        <td th:text="${kunde.adresse}"/>
+        <td th:text="${kunde.email}"/>
+
+        <td>
+            <a th:href="@{'/opdaterKunde/'+${kunde.kundenummer}}">
+                <button>Opdater Kunde Information</button></a>
+        </td>
+        <td>
+            <a th:href="@{'/sletKunde/'+${kunde.kundenummer}}">
+                <button>Slet Kunde Information</button></a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+</body>
+</html>

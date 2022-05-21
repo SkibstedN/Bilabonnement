@@ -3,6 +3,7 @@ package com.example.bilabonnement.Service;
 
 import com.example.bilabonnement.Model.Abonnement;
 import com.example.bilabonnement.Model.Bil;
+import com.example.bilabonnement.Model.Kunde;
 import com.example.bilabonnement.Repository.BilRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -103,6 +104,22 @@ public class BilService {
     }
 
     public List<Bil> visTilgængeligeBiler() { return bilRepo.visTilgængeligeBiler();}
+
+    public List<Kunde> seKundeListe(){
+        return bilRepo.seKundeListe();
+    }
+    public void opretKunde(Kunde kunde){
+        bilRepo.opretKunde(kunde);
+    }
+    public Kunde findKunde(int kundenummer){
+        return bilRepo.findKunde(kundenummer);
+    }
+    public void opdaterKunde(Kunde kunde){
+        bilRepo.opdaterKunde(kunde);
+    }
+    public boolean sletKunde(int kundenummer){
+        return bilRepo.sletKunde(kundenummer);
+    }
 
 }
 

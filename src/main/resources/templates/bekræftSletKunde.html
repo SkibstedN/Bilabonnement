@@ -13,42 +13,38 @@
         <button class="topbarknap">Tilbage</button></a>
     <a href="administrerAbonnementer">
         <button class="topbarknap">Administrer Abonnementer</button></a>
-
     <a href="administrerBiler">
         <button class="topbarknap">Administrer Biler</button></a>
-
     <a href="administrerFejlrapporterData">
         <button class="topbarknap">Administrer fejlrapporter</button></a>
 </div>
 <table>
     <thead>
     <tr>
-        <th>Abonnement Nummer</th>
-        <th>Vogn Nummer</th>
-        <th>Start Dato</th>
-        <th>Slut Dato</th>
-        <th>Pris pr Måned</th>
-        <th>Max Km</th>
         <th>Kundenummer</th>
+        <th>Fornavn</th>
+        <th>Efternavn</th>
+        <th>Telefon nummer</th>
+        <th>Adresse</th>
+        <th>Email</th>
     </tr>
     </thead>
     <tbody>
     <tr class="tr">
-        <td th:text="${abonnementDerSkalSlettes.abonnementnummer}"/>
-        <td th:text="${abonnementDerSkalSlettes.FK_vognnummer}"/>
-        <td th:text="${abonnementDerSkalSlettes.startdato}"/>
-        <td th:text="${abonnementDerSkalSlettes.slutdato}"/>
-        <td th:text="${abonnementDerSkalSlettes.prisprmaaned}"/>
-        <td th:text="${abonnementDerSkalSlettes.maxkm}"/>
-        <td th:text="${abonnementDerSkalSlettes.FK_kundenummer}"/>
+        <td th:text="${kundeDerSkalSlettes.kundenummer}"/>
+        <td th:text="${kundeDerSkalSlettes.fornavn}"/>
+        <td th:text="${kundeDerSkalSlettes.efternavn}"/>
+        <td th:text="${kundeDerSkalSlettes.tlfnummer}"/>
+        <td th:text="${kundeDerSkalSlettes.adresse}"/>
+        <td th:text="${kundeDerSkalSlettes.email}"/>
     </tr>
     </tbody>
 </table>
 <div>
-    <p>Skal dette abonnement slettes?</p>
-    <a th:href="@{'/bekræftSletAbonnementKnap/'+${abonnementDerSkalSlettes.abonnementnummer}}">
+    <p>Skal denne kunde fjernes fra systemet?</p>
+    <a th:href="@{'/bekræftSletKundeKnap/'+${kundeDerSkalSlettes.kundenummer}}">
         <button>Ja</button></a>
-    <a href="/bekræftSletAbonnementKnapNej">
+    <a href="/bekræftSletKundeKnapNej">
         <button>Nej</button></a>
 </div>
 </body>

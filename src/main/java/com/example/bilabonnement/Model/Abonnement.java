@@ -7,19 +7,19 @@ public class Abonnement {
     private String slutdato;
     private double prisprmaaned;
     private int maxkm;
-    private int kundenummer;
+    private int FK_kundenummer;
 
     public Abonnement(){}
 
     public Abonnement(int abonnementnummer, int FK_vognnummer, String startdato, String slutdato, double prisprmaaned,
-                      int maxkm, int kundenummer){
+                      int maxkm, int FK_kundenummer){
         this.abonnementnummer = abonnementnummer;
         this.FK_vognnummer = FK_vognnummer;
         this.startdato = startdato;
         this.slutdato = slutdato;
         this.prisprmaaned = prisprmaaned;
         this.maxkm = maxkm;
-        this.kundenummer = kundenummer;
+        this.FK_kundenummer = FK_kundenummer;
     }
 
     public int getAbonnementnummer() {
@@ -70,12 +70,12 @@ public class Abonnement {
         this.maxkm = maxkm;
     }
 
-    public int getKundenummer() {
-        return kundenummer;
+    public int getFK_Kundenummer() {
+        return FK_kundenummer;
     }
 
     public void setKundenummer(int kundenummer) {
-        this.kundenummer = kundenummer;
+        this.FK_kundenummer = kundenummer;
     }
 
 

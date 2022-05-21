@@ -2,6 +2,7 @@ package com.example.bilabonnement.Controller;
 
 import com.example.bilabonnement.Model.Abonnement;
 import com.example.bilabonnement.Model.Bil;
+import com.example.bilabonnement.Model.Kunde;
 import com.example.bilabonnement.Service.BilService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -284,6 +285,54 @@ BilService bilService;
         List<Bil> bilListe = bilService.sortByRegistreringsafgift();
         model.addAttribute("billiste",bilListe);
         return "/sorterBil";
+    }
+
+    @GetMapping("/administrerKunder")
+    public String administrerKunder(Model model){
+        List<Kunde> kundeListe = bilService.seKundeListe();
+        model.addAttribute("kundeliste", kundeListe);
+        return "/kundeSide";
+    }
+    @GetMapping("/opretKunde")
+    public String opretKunde(){
+        return "/opretKunde";
+    }
+
+    @PostMapping("/opretKundeKnap")
+    public String opretKundeKnap(@ModelAttribute Kunde kunde){
+        bilService.opretKunde(kunde);
+        return "redirect:/administrerKunder";
+    }
+
+    @GetMapping("/opdaterKunde/{kundenummer}")
+    public  String opdaterKunde(@PathVariable("kundenummer") int kundenummer, Model model){
+        model.addAttribute("kunde",bilService.findKunde(kundenummer));
+        return "/opdaterKunde";
+    }
+    @PostMapping("/opdaterKundeKnap")
+    public String opdaterKundeKnap(@ModelAttribute Kunde kunde){
+        bilService.opdaterKunde(kunde);
+        return "redirect:/administrerKunder";
+    }
+    @GetMapping("/sletKunde/{kundenummer}")
+    public String sletKunde(@PathVariable("kundenummer")int kundenummer, Model model){
+        Kunde kundeDerSkalSlettes = bilService.findKunde(kundenummer);
+        model.addAttribute("kundeDerSkalSlettes",kundeDerSkalSlettes);
+        return "/bekræftSletKunde";
+    }
+    @GetMapping("/bekræftSletKundeKnapNej")
+    public String bekræftSletKundeNej(){
+        return "redirect:/administrerKunder";
+    }
+
+    @GetMapping("/bekræftSletKundeKnap/{kundenummer}")
+    public String bekræfKundeBil(@PathVariable("kundenummer") int kundenummer){
+        boolean sletkunden = bilService.sletKunde(kundenummer);
+        if(sletkunden) {
+            return "redirect:/administrerKunder";
+        } else {
+            return "redirect:/administrerKunder"; //skal sende en fejlmeddelelse hvis noget gik galt
+        }
     }
 
 

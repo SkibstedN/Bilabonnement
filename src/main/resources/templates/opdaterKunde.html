@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" >
+<head>
+    <meta charset="UTF-8">
+    <title>Opdater Bil</title>
+    <link rel="stylesheet" type="text/css" href="../stylesheet.css">
+</head>
+<body>
+<div class="topbar">
+    <a href="/"><button class="topbarknap">HOME</button></a>
+    <label class="topbarsidenavn" style="float:right">Abonnement side</label>
+    <a href="/administrerBiler">
+        <button class="topbarknap">Tilbage</button></a>
+
+    <a href="/administrerAbonnementer">
+        <button class="topbarknap">Administrer Abonnementer</button></a>
+
+    <a href="/administrerBiler">
+        <button class="topbarknap">Administrer Biler</button></a>
+
+    <a href="/administrerFejlrapporterData">
+        <button class="topbarknap">Administrer fejlrapporter</button></a>
+</div>
+<div class="div1 indhold">
+    <form class="form" action="/opdaterKundeKnap" method="post">
+        <label>Kundenummer</label>
+        <input type="text" readonly name="kundenummer" th:value="${kunde.kundenummer}"/>
+        <label>Fornavn</label>
+        <input type="text" id="fornavn" name="fornavn" th:value="${kunde.fornavn}"/>
+        <label>Efternavn</label>
+        <input type="text" id="efternavn" name="efternavn" th:value="${kunde.efternavn}"/>
+        <label>telefon nummer</label>
+        <input type="text" id="tlfnummer" name="tlfnummer" th:value="${kunde.tlfnummer}"/>
+        <label>Adresse</label>
+        <input type="text" id="adresse" name="adresse" th:value="${kunde.adresse}"/>
+        <label>Email</label>
+        <input type="text" id="email" name="email" th:value="${kunde.email}"/>
+        <input type="submit" value="Gem Ændringer">
+    </form>
+</div>
+</body>
+</html>
