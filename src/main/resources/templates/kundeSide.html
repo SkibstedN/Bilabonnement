@@ -30,11 +30,12 @@
         <th>Tlf. nummer</th>
         <th>Adresse</th>
         <th>Email</th>
+        <th></th>
+        <th></th>
         </tr>
     </thead>
     <tbody>
     <tr class="tr" th:each="kunde: ${kundeliste}">
-        <td></td>
         <td th:text="${kunde.kundenummer}"/>
         <td th:text="${kunde.fornavn}"/>
         <td th:text="${kunde.efternavn}"/>
