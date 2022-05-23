@@ -130,6 +130,7 @@ BilService bilService;
         Abonnement nytAbonnement =bilService.findAbonnement(abonnementnummer);
         nytAbonnement.setFK_vognnummer(vognnummer);
         bilService.opdaterOprettelseAbonnement(nytAbonnement);
+        //Skal rette bilstatus i db her. retStatus(vognnummer)... default skal biler være tilgængelige
         return "redirect:/administrerAbonnementer";
 
     }
