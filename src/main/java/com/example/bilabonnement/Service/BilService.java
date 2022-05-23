@@ -34,6 +34,7 @@ public class BilService {
     public void opretAbonnement(Abonnement abonnement){
         bilRepo.opretAbonnement(abonnement);
     }
+    public void opdaterOprettelseAbonnement(Abonnement abonnement){ bilRepo.opdaterOprettelseAbonnement(abonnement);}
     public List<Abonnement> seAbonnementListe(){
         return bilRepo.seAbonnementListe();
     }

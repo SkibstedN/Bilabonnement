@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.sql.SQLOutput;
 import java.util.List;
 
 @Controller
@@ -119,14 +120,16 @@ BilService bilService;
         model.addAttribute("abonnement",abonnement);
         List<Bil> bilListe = bilService.visTilgængeligeBiler();
         model.addAttribute("billiste", bilListe);
+        bilService.opretAbonnement(abonnement);
         return "/tilgængeligeBiler";
-
     }
 
-    @PostMapping("/finalOpretAbonnementKnap/{vognnummer}")
-    public String finalOpretAbonnement(@PathVariable("vognnummer") int vognnummer,@ModelAttribute Abonnement abonnement){
-        abonnement.setFK_vognnummer(vognnummer);
-        bilService.opretAbonnement(abonnement);
+    @GetMapping("/finalOpretAbonnementKnap/{vognnummer}/{abonnementnummer}")
+    public String finalOpretAbonnement(@PathVariable("vognnummer") int vognnummer,@PathVariable("abonnementnummer") int abonnementnummer){
+
+        Abonnement nytAbonnement =bilService.findAbonnement(abonnementnummer);
+        nytAbonnement.setFK_vognnummer(vognnummer);
+        bilService.opdaterOprettelseAbonnement(nytAbonnement);
         return "redirect:/administrerAbonnementer";
 
     }

@@ -24,7 +24,7 @@
         <th>Abonnement nummer</th>
         <th>Start dato</th>
         <th>Slut dato</th>
-        <th>< månedlig pris</th>
+        <th>Månedlig pris</th>
         <th>Max Km</th>
         <th>Kundenummer</th>
 
@@ -74,8 +74,14 @@
         <td th:text="${bil.kmprliter}"/>
         <td th:text="${bil.registreringsafgift}"/>
         <td th:text="${bil.bilstatus}"/>
+        <td readonly th:text="${abonnement.abonnementnummer}"/>
+        <td readonly th:text="${abonnement.startdato}"/>
+        <td readonly th:text="${abonnement.slutdato}"/>
+        <td readonly th:text="${abonnement.prisprmaaned}"/>
+        <td readonly th:text="${abonnement.maxkm}"/>
+        <td readonly th:text="${abonnement.kundenummer}"/>
         <td>
-            <a th:href="@{'/finalOpretAbonnementKnap/'+${bil.vognnummer}}">
+            <a th:href="@{'/finalOpretAbonnementKnap/'+${bil.vognnummer}+'/'+${abonnement.abonnementnummer}}">
                 <button>Opret Abonnement</button></a>
         </td>
     </tr>
