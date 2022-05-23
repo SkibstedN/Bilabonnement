@@ -62,11 +62,11 @@ public class BilRepo {
                 " slutdato, prisprmaaned, maxkm, FK_kundenummer)" +
                 "VALUES (?,?,?,?,?,?,?)";
         dbConnection.update(sqlOpretAbonnement,abonnement.getAbonnementnummer(),abonnement.getFK_vognnummer(),abonnement.getStartdato(),
-                abonnement.getSlutdato(),abonnement.getPrisprmaaned(),abonnement.getMaxkm(),abonnement.getFK_Kundenummer());
+                abonnement.getSlutdato(),abonnement.getPrisprmaaned(),abonnement.getMaxkm(),abonnement.getKundenummer());
     }
     public List<Abonnement> seAbonnementListe(){
         String sqlSeAbonnement = "SELECT abonnementnummer, FK_vognnummer, startdato," +
-                " slutdato, prisprmaaned, maxkm, FK_kundenummer " +
+                " slutdato, prisprmaaned, maxkm, FK_kundenummer as kundenummer " +
                 "FROM abonnement ";
         RowMapper<Abonnement> abonnementListe = new BeanPropertyRowMapper<>(Abonnement.class);
         return dbConnection.query(sqlSeAbonnement, abonnementListe);
@@ -83,7 +83,7 @@ public class BilRepo {
         String sqlOpdaterAbonnement ="UPDATE abonnement SET FK_vognnummer = ?, startdato = ?, slutdato = ?," +
                 "prisprmaaned = ?, maxkm = ?, FK_kundenummer = ? WHERE abonnementnummer = ?";
         dbConnection.update(sqlOpdaterAbonnement,abonnement.getFK_vognnummer(),abonnement.getStartdato(),
-                abonnement.getSlutdato(),abonnement.getPrisprmaaned(),abonnement.getMaxkm(),abonnement.getFK_Kundenummer(),
+                abonnement.getSlutdato(),abonnement.getPrisprmaaned(),abonnement.getMaxkm(),abonnement.getKundenummer(),
                 abonnement.getAbonnementnummer());
     }
 
