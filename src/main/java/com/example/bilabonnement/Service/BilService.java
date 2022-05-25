@@ -122,6 +122,10 @@ public class BilService {
         return bilRepo.sletKunde(kundenummer);
     }
 
+    public void opdaterStatus(int vognnummer){
+        bilRepo.opdaterStatus(vognnummer);
+    }
+
 }
 
 

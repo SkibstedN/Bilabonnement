@@ -75,7 +75,6 @@ BilService bilService;
 
     @GetMapping("/opdaterBil/{vognnummer}")
     public  String opdaterBil(@PathVariable("vognnummer") int vognnummer, Model model){
-        //System.out.println(bilService.findBil(vognnummer).getVognnummer());
         model.addAttribute("bil",bilService.findBil(vognnummer));
         return "/opdaterBil";
     }
@@ -130,7 +129,7 @@ BilService bilService;
         Abonnement nytAbonnement =bilService.findAbonnement(abonnementnummer);
         nytAbonnement.setFK_vognnummer(vognnummer);
         bilService.opdaterOprettelseAbonnement(nytAbonnement);
-        //Skal rette bilstatus i db her. retStatus(vognnummer)... default skal biler være tilgængelige
+        bilService.opdaterStatus(vognnummer);
         return "redirect:/administrerAbonnementer";
 
     }
