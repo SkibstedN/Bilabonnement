@@ -104,17 +104,19 @@ BilService bilService;
         }
     }
 
-    @GetMapping("/abonnementSide")
+    @GetMapping("/abonnementSide")//sender fra dataregisterings siden til abonnementSide.html
     public String abonnementSide(){
         return "/abonnementSide";
     }
 
-    @GetMapping("/opretAbonnement")
+    @GetMapping("/opretAbonnement") //sender fra abonnemenSide.html til opretAbonnement.html når man trykker på  knappen der hedder opret abonnement
     public String opretAbonnement(){
         return "/opretAbonnement";
     }
 
-    @PostMapping("/opretAbonnementKnap")
+    @PostMapping("/opretAbonnementKnap") /*tager imod info til at oprette abonnement,
+    via annotationen @ModelAttribute, tilføjer liste med tilgængelige biler til Model som attribut,
+    så tilgængeligeBiler.html kan vise alle informationerne*/
     public String opretAbonnementKnap(@ModelAttribute Abonnement abonnement, Model model){
         model.addAttribute("abonnement",abonnement);
         List<Bil> bilListe = bilService.visTilgængeligeBiler();
@@ -124,6 +126,12 @@ BilService bilService;
     }
 
     @GetMapping("/finalOpretAbonnementKnap/{vognnummer}/{abonnementnummer}")
+    /*Tager imod vognnummer og abonnementnummer som strings fra forrige html formular,
+    caster dem til int datatype refereret med @Pathvariable annotationen -
+    indlæser det referedede abonnement, sætter vognnummer til  den værdi vi har med som parameter
+    opdaterer abonnementet i databasen, med det nye vognnummer
+    opdatarer Status på den valgte bil til 'Optaget'
+    Redirecter til administereAbonnementer controlleren som indlæser den opdaterede liste */
     public String finalOpretAbonnement(@PathVariable("vognnummer") int vognnummer,
                                        @PathVariable("abonnementnummer") int abonnementnummer){
 
