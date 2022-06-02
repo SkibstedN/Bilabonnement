@@ -142,29 +142,37 @@ BilService bilService;
         return "redirect:/administrerAbonnementer";
     }
 
-    @GetMapping("/opdaterAbonnement/{abonnementnummer}")
+    @GetMapping("/opdaterAbonnement/{abonnementnummer}")/*Tager imod et abonnementnummer via @PathVariable for at finde det ønskede
+    abonnement og tilføjer det som attribut til model
+    via addAttribut metoden så næste html side har adgang abonnementet*/
     public  String opdaterAbonnement(@PathVariable("abonnementnummer") int abonnementnummer, Model model){
         model.addAttribute("abonnement",bilService.findAbonnement(abonnementnummer));
         return "/opdaterAbonnement";
     }
-    @PostMapping("/opdaterAbonnement")
+    @PostMapping("/opdaterAbonnement")/*Den tager imod det data fra forrige html side og bruger @ModelAttribute
+    så vi kan opdatere databasen med de nye informationer. Til sidst redirecter til administrerAbonnement Controlleren,
+    så listen med det opdateret abonnement kan genindlæses*/
     public String opdaterAbonnement(@ModelAttribute Abonnement abonnement){
         bilService.opdaterAbonnement(abonnement);
         return "redirect:/administrerAbonnementer";
     }
 
-    @GetMapping("/sletAbonnement/{abonnementnummer}")
+    @GetMapping("/sletAbonnement/{abonnementnummer}")/*Tager imod et abonnementnummer og finder det ønsket
+    abonnement. Derefter tilføjes den med addAttribute metoden til model så den er tilgængelig til næste html formular*/
     public String sletAbonnement(@PathVariable("abonnementnummer")int abonnementnummer, Model model){
         Abonnement abonnementDerSkalSlettes = bilService.findAbonnement(abonnementnummer);
         model.addAttribute("abonnementDerSkalSlettes",abonnementDerSkalSlettes);
         return "/bekræftSletAbonnement";
         }
 
-    @GetMapping("/bekræftSletAbonnementKnapNej")
+    @GetMapping("/bekræftSletAbonnementKnapNej")/*redirecter til administrerAbonnementer controller*/
     public String bekræftSletAbonnementNej(){
         return "redirect:/administrerAbonnementer";
     }
-    @GetMapping("/bekræftSletAbonnementKnap/{abonnementnummer}")
+    @GetMapping("/bekræftSletAbonnementKnap/{abonnementnummer}")/*Tager imod abonnementnummer og
+    finder det ønskede abonnement i databasen der så via et statement sletter abonnement. Derefter checker
+    den på en boolean om der er slettet via et if else statement. Derefter redirecter den til
+    administrerAbonnementer controlleren*/
     public String bekræftSletAbonnement(@PathVariable("abonnementnummer") int abonnementnummer){
         boolean sletabonnementet = bilService.sletAbonnement(abonnementnummer);
         if(sletabonnementet) {
@@ -174,7 +182,8 @@ BilService bilService;
         }
     }
 
-    @GetMapping("/sorterEfterAbonnementnummer")
+    @GetMapping("/sorterEfterAbonnementnummer")/*den laver en abonnement liste der bliver
+    tilføjet med addAttribute og gør den tilgængelig i næste html formular*/
     public String sortByAbonnementnummer(Model model){
         List<Abonnement> abonnementListe = bilService.sortByAbonnementnummer();
         model.addAttribute("abonnementliste", abonnementListe);
@@ -221,11 +230,11 @@ BilService bilService;
         model.addAttribute("abonnementliste", abonnementListe);
         return "/sorterAbonnement";
     }
-    @GetMapping("/sorterEfterVognnummer")
-    public String sortByVognnummer(Model model){
-            List<Bil> bilListe = bilService.sortByVognnummer();
-            model.addAttribute("billiste",bilListe);
-        return "/sorterBil";
+    @GetMapping("/sorterEfterVognnummer") // Dette er et browser kald, når denne string bliver kaldt i browseren initialisere den methoden under.
+    public String sortByVognnummer(Model model){//Methoden indeholder en Model model der er et tomt og abstrakt objekt der kan morphe ind til at blive en liste med biler og derefter sendes videre til html filen sorter bil.
+            List<Bil> bilListe = bilService.sortByVognnummer();//her bliver en liste med bil objekter fyldt ved et methode kald til BilService som kalder BilRepo.
+            model.addAttribute("billiste",bilListe);//Model transformeres til at være listen med biler og får navnet billiste til at kunne identificeres med thymeleaf i html filen.
+        return "/sorterBil";//Html filen /sorterBil bliver kaldt.
     }
     @GetMapping("/sorterEfterStelnummer")
     public String sortByStelnummer(Model model){

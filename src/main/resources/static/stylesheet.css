@@ -1,5 +1,5 @@
-.td, th{
-    border: #949494;
+td, th{
+    border: 1px #7f7f7f;
 }
 .tr:nth-child(even){
     background-color: whitesmoke;
@@ -7,12 +7,11 @@
     border: black;
 }
 .tr:nth-child(odd){
-    background-color: #f7f7ff;
+    background-color: #e3e3ec;
     color: black;
     border: black;
 }
 .topbar{
-    list-style-type: none;
     margin: 0;
     padding: 0;
     float: top;
@@ -137,7 +136,5 @@
         right: 30%;
         width: calc(80% - 600px);
         padding: 25px;
-
     }
-
 }

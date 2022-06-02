@@ -111,7 +111,7 @@ public class BilRepo {
     public List<Abonnement> sortByKundenummer(){
         String sqlSorter = "SELECT abonnementnummer, FK_vognnummer, startdato," +
                 " slutdato, prisprmaaned, maxkm, FK_kundenummer as kundenummer " +
-                "FROM abonnement ORDER BY kundenummer";
+                "FROM abonnement ORDER BY FK_kundenummer";
         RowMapper<Abonnement> abonnementListe = new BeanPropertyRowMapper<>(Abonnement.class);
         return dbConnection.query(sqlSorter, abonnementListe);
     }
@@ -155,9 +155,9 @@ public class BilRepo {
     public List<Bil> sortByVognnummer(){
         String sqlSorter = "SELECT vognnummer, stelnummer, maerke, model, braendstoftype," +
                 " udstyrsniveau, odometer, hestekraefter, staalpris, co2udledning, kmprliter, registreringsafgift, bilstatus " +
-                "FROM biler ORDER BY vognnummer";
-        RowMapper<Bil> bilListe = new BeanPropertyRowMapper<>(Bil.class);
-        return dbConnection.query(sqlSorter, bilListe);
+                "FROM biler ORDER BY vognnummer";//Denne string er et sql statement der vil sortere bilerne i tabellen efter deres vognnummer
+        RowMapper<Bil> bilListe = new BeanPropertyRowMapper<>(Bil.class);// Her bliver lavet en liste af objekter ud fra rækken i tabelen. Det er tomme bil objekter der bliver lavet da den kalder bil klassen.
+        return dbConnection.query(sqlSorter, bilListe);//Her bliver jdbcTemplate brugt til at få forbindelse og sende sql statementet for at få dataen tilbage og fylder de tomme objeter i listen og returnere den nu fyldte liste.
     }
     public List<Bil> sortByStelnummer(){
         String sqlSorter = "SELECT vognnummer, stelnummer, maerke, model, braendstoftype," +
