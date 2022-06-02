@@ -42,14 +42,14 @@ BilService bilService;
         return "/forretningsudviklere";
     }
 
-    @GetMapping("/administrerAbonnementer") //sender brugeren fra dataregistreringforsiden til abonnementsiden
+    @GetMapping("/administrerAbonnementer") //sender brugeren fra dataregistreringforsiden til abonnementsiden, og indlæser listen af oprettede abonnementer
     public String administrerAbonnementer(Model model){
         List<Abonnement> abonnementListe = bilService.seAbonnementListe();
         model.addAttribute("abonnementliste", abonnementListe);
         return "/abonnementSide";
     }
 
-    @GetMapping("/administrerBiler") //sender brugeren fra dataregistreringforsiden til bilsiden
+    @GetMapping("/administrerBiler") //sender brugeren fra dataregistreringforsiden til bilsiden, og indlæser listen af biler i systemet
     public String administrerBiler(Model model){
         List<Bil> bilListe = bilService.seBilListe();
         model.addAttribute("billiste",bilListe);
@@ -67,34 +67,34 @@ BilService bilService;
         return "/opretBil";
     }
 
-    @PostMapping("/opretBil")
+    @PostMapping("/opretBil") //gemmer informationerne fra opretBil html, til databasen, og sender videre til administrerBiler, så billisten genindlæses.
     public String opretBil(@ModelAttribute Bil bil){
         bilService.opretBil(bil);
         return "redirect:/administrerBiler";
     }
 
-    @GetMapping("/opdaterBil/{vognnummer}")
+    @GetMapping("/opdaterBil/{vognnummer}")//finder bilen i databasen, ud fra vognnumeret brugeren giver, så næste html side kan display de korrekte informationer, så de evt, kan opdateres
     public  String opdaterBil(@PathVariable("vognnummer") int vognnummer, Model model){
         model.addAttribute("bil",bilService.findBil(vognnummer));
         return "/opdaterBil";
     }
-    @PostMapping("/opdaterBil")
+    @PostMapping("/opdaterBil")//gemmer det rettede bilobject i databasen, sender videre til administrerBiler, så listen af biler genindlæses
     public String opdaterBil(@ModelAttribute Bil bil){
         bilService.opdaterBil(bil);
       return "redirect:/administrerBiler";
     }
-    @GetMapping("/sletBil/{vognnummer}")
+    @GetMapping("/sletBil/{vognnummer}")//finder den ønskede bil ud fra vognnumeret, og sender så videre til en verifikationsside om slettelse
     public String sletBil(@PathVariable("vognnummer")int vognnummer, Model model){
         Bil bilDerSkalSlettes = bilService.findBil(vognnummer);
         model.addAttribute("bilDerSkalSlettes",bilDerSkalSlettes);
         return "/bekræftSletBil";
     }
-    @GetMapping("/bekræftSletBilKnapNej")
+    @GetMapping("/bekræftSletBilKnapNej")// hvis brugeren fortryder sletningen af bilen, sender vi dem tilbage til administrerBiler html siden.
     public String bekræftSletBilNej(){
         return "redirect:/administrerBiler";
     }
 
-    @GetMapping("/bekræftSletBilKnap/{vognnummer}")
+    @GetMapping("/bekræftSletBilKnap/{vognnummer}") //hvis brugeren bekræfter slettelsen af bilen, så slettes den fra databasen, og sender browseren tilbage til administrerBiler, så listen genindlæses
     public String bekræfSletBil(@PathVariable("vognnummer") int vognnummer){
         boolean sletbilen = bilService.sletBil(vognnummer);
         if(sletbilen) {
@@ -124,14 +124,14 @@ BilService bilService;
     }
 
     @GetMapping("/finalOpretAbonnementKnap/{vognnummer}/{abonnementnummer}")
-    public String finalOpretAbonnement(@PathVariable("vognnummer") int vognnummer,@PathVariable("abonnementnummer") int abonnementnummer){
+    public String finalOpretAbonnement(@PathVariable("vognnummer") int vognnummer,
+                                       @PathVariable("abonnementnummer") int abonnementnummer){
 
         Abonnement nytAbonnement =bilService.findAbonnement(abonnementnummer);
         nytAbonnement.setFK_vognnummer(vognnummer);
         bilService.opdaterOprettelseAbonnement(nytAbonnement);
         bilService.opdaterStatus(vognnummer);
         return "redirect:/administrerAbonnementer";
-
     }
 
     @GetMapping("/opdaterAbonnement/{abonnementnummer}")

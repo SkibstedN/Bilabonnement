@@ -58,11 +58,14 @@ public class BilRepo {
     }
 
     public void opretAbonnement(Abonnement abonnement){
-        String sqlOpretAbonnement ="INSERT INTO abonnement ( abonnementnummer, FK_vognnummer, startdato," +
+        String sqlOpretAbonnement ="INSERT INTO abonnement ( abonnementnummer," +
+                " FK_vognnummer, startdato," +
                 " slutdato, prisprmaaned, maxkm, FK_kundenummer)" +
                 "VALUES (?,?,?,?,?,?,?)";
-        dbConnection.update(sqlOpretAbonnement,abonnement.getAbonnementnummer(),abonnement.getFK_vognnummer(),abonnement.getStartdato(),
-                abonnement.getSlutdato(),abonnement.getPrisprmaaned(),abonnement.getMaxkm(),abonnement.getKundenummer());
+        dbConnection.update(sqlOpretAbonnement,abonnement.getAbonnementnummer(),
+                abonnement.getFK_vognnummer(),abonnement.getStartdato(),
+                abonnement.getSlutdato(),abonnement.getPrisprmaaned(),abonnement.getMaxkm()
+                ,abonnement.getKundenummer());
     }
     public void opdaterOprettelseAbonnement(Abonnement abonnement){
         String sqlVognnummertilføj="UPDATE abonnement SET FK_vognnummer = ? WHERE abonnementnummer = ?";
@@ -240,7 +243,8 @@ public class BilRepo {
 
     public List<Bil> visTilgængeligeBiler() {
         String sqlBilstatus = "SELECT vognnummer, stelnummer, maerke, model, braendstoftype," +
-                " udstyrsniveau, odometer, hestekraefter, staalpris, co2udledning, kmprliter, registreringsafgift, bilstatus " +
+                " udstyrsniveau, odometer, hestekraefter, staalpris, co2udledning, kmprliter," +
+                " registreringsafgift, bilstatus " +
                 "FROM biler WHERE bilstatus = 'tilgængelig'";
         RowMapper<Bil> bilListe = new BeanPropertyRowMapper<>(Bil.class);
         return dbConnection.query(sqlBilstatus, bilListe);
