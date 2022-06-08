@@ -1,15 +1,16 @@
 td, th{
     border: 1px #7f7f7f;
 }
+table{
+    Border: solid black 2px;
+}
 .tr:nth-child(even){
     background-color: whitesmoke;
     color: black;
-    border: black;
 }
 .tr:nth-child(odd){
     background-color: #e3e3ec;
     color: black;
-    border: black;
 }
 .topbar{
     margin: 0;
@@ -46,6 +47,10 @@ td, th{
 .topbarknap:hover{
     background-color: #61a0ff;
     color: #ffffff;
+}
+.topbarknap:active{
+    background-color: chartreuse;
+    color: black;
 }
 .topbarknapmedbilled{
     float: left;
