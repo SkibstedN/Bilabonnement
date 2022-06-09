@@ -25,6 +25,8 @@ BilService bilService;
         return "/startside";
     }
 
+
+
     @GetMapping("/startsideDataregistrering")  //sender fra startsiden til dataregistrerings forsiden. og indlæser abonnementerne til dashbordet
     public String startsideDataregistrering(Model model){
         List<Abonnement> abonnementListe = bilService.sortBySlutdato();

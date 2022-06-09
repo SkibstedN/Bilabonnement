@@ -48,10 +48,7 @@ table{
     background-color: #61a0ff;
     color: #ffffff;
 }
-.topbarknap:active{
-    background-color: chartreuse;
-    color: black;
-}
+
 .topbarknapmedbilled{
     float: left;
     height: max-content;
